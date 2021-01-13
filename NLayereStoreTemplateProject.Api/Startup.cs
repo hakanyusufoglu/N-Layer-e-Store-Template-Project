@@ -18,6 +18,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using NLayereStoreTemplateProject.Service.Services;
+using Newtonsoft;
+
 namespace NLayereStoreTemplateProject.Api
 {
     public class Startup
@@ -40,11 +43,21 @@ namespace NLayereStoreTemplateProject.Api
 
                 });
             });
+ 
             services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
             services.AddScoped(typeof(IService<>), typeof(Service.Services.Service<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddAutoMapper(typeof(Startup));
+            services.AddScoped<IOrderService, OrderService>();
             services.AddControllers();
+
+
+            //Order tablosunda product ve user tablolarýndan join iþlemi yapýlmasýndan dolayý jsonun istediði þekilde veri gelmesi gerekmektedir. Bu yüzden de eðer order, product, user tablolarýnda ki alanlar hazýr bir sýnýf yoksa json hatasý vermektedir. Bu hatayý önlemek adýna; 
+
+            services.AddControllers().AddNewtonsoftJson(options =>
+options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,4 +1,6 @@
-﻿using NLayereStoreTemplateProject.Core.UnitOfWorks;
+﻿using NLayereStoreTemplateProject.Core.Repositories;
+using NLayereStoreTemplateProject.Core.UnitOfWorks;
+using NLayereStoreTemplateProject.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,10 +12,15 @@ namespace NLayereStoreTemplateProject.Data.UnitOfWorks
     public class UnitOfWork : IUnitOfWork
     {
         private readonly AppDbContext _context;
+
+        private OrderRepository _orderRepository;
         public UnitOfWork(AppDbContext appDbContext)
         {
             _context = appDbContext;
         }
+
+        public IOrderRepository Order => _orderRepository = _orderRepository ?? new OrderRepository(_context);
+
         public void Commit()
         {
             _context.SaveChanges();
