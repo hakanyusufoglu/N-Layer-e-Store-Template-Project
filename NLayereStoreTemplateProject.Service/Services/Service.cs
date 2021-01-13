@@ -18,50 +18,58 @@ namespace NLayereStoreTemplateProject.Service.Services
             _unitOfWork = unitOfWork;
             _repository = repository;
         }
-        public async Task AddAsync(TEntity entity)
+        public async Task<TEntity> AddAsync(TEntity entity)
         {
             await _repository.AddAsync(entity);
             await _unitOfWork.CommitAsync();
+            return entity;
         }
 
-        public Task AddRangeAsync(IEnumerable<TEntity> entities)
+        public async Task<IEnumerable<TEntity>> AddRangeAsync(IEnumerable<TEntity> entities)
         {
-            throw new NotImplementedException();
+            await _repository.AddRangeAsync(entities);
+            await _unitOfWork.CommitAsync();
+            return entities;
+            
         }
 
-        public Task<IEnumerable<TEntity>> GetAllAsync()
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            throw new NotImplementedException();
+           return await _repository.GetAllAsync();
         }
 
-        public Task<TEntity> GetByIdAsync(int id)
+        public async Task<TEntity> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+           return await _repository.GetByIdAsync(id);
         }
 
         public void Remove(TEntity entity)
         {
-            throw new NotImplementedException();
+            _repository.Remove(entity);
+            _unitOfWork.Commit();
         }
 
         public void RemoveRange(IEnumerable<TEntity> entities)
         {
-            throw new NotImplementedException();
+            _repository.RemoveRange(entities);
+            _unitOfWork.Commit();
         }
 
-        public Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
+        public async Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await _repository.SingleOrDefaultAsync(predicate);
         }
 
         public TEntity Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            _repository.Update(entity);
+            _unitOfWork.Commit();
+            return entity;
         }
 
-        public Task<IEnumerable<TEntity>> Where(Expression<Func<TEntity, bool>> predicate)
+        public async Task<IEnumerable<TEntity>> Where(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await _repository.Where(predicate);
         }
     }
 }
