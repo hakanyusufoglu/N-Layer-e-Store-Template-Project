@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace NLayereStoreTemplateProject.Service.Services
 {
-    class Service<TEntity> : IService<TEntity> where TEntity : class
+   public class Service<TEntity> : IService<TEntity> where TEntity : class
     {
         public readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<TEntity> _repository;
