@@ -17,6 +17,7 @@ namespace NLayereStoreTemplateProject.Core.Entities
         public virtual Category Category { get; set; }
         public virtual Brand Brand{ get; set; }
         public ICollection<Order> Orders { get; set; }
+        public ICollection<Basket> Baskets { get; set; }
 
 
 

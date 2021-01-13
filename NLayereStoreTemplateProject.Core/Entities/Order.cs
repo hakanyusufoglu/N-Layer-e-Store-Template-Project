@@ -10,9 +10,10 @@ namespace NLayereStoreTemplateProject.Core.Entities
         public PaymentType PaymentType { get; set; }
         public OrderStatus Status{ get; set; }
         public DateTime dateTime { get; set; }
-        public int TotalOrder { get; set; }
+        public int OrderCount { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal TotalPrice { get; set; }
+        public bool IsDeleted { get; set; }
         public virtual Product Product { get; set; }
         public virtual User User { get; set; }
 

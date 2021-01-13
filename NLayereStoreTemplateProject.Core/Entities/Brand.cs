@@ -14,6 +14,7 @@ namespace NLayereStoreTemplateProject.Core.Entities
         public int BrandId { get; set; }
         public string Name { get; set; }
         public string Adress { get; set; }
+        public bool IsDeleted { get; set; }
         public ICollection<Product> Products { get; set; }
     }
 }
