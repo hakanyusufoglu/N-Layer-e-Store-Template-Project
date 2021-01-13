@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NLayereStoreTemplateProject.Core\NLayereStoreTemplateProject.Core.csproj" />
+    <ProjectReference Include="..\NLayereStoreTemplateProject.Data\NLayereStoreTemplateProject.Data.csproj" />
+  </ItemGroup>
+
 </Project>
