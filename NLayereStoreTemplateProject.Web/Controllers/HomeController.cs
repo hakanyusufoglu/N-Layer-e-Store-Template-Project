@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NLayereStoreTemplateProject.Web.Controllers
 {
-    public class Home2Controller : Controller
+    public class HomeController : Controller
     {
         public IActionResult Index()
         {
