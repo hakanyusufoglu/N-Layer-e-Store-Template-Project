@@ -14,12 +14,14 @@ namespace NLayereStoreTemplateProject.Data.UnitOfWorks
         private readonly AppDbContext _context;
 
         private OrderRepository _orderRepository;
+        private ProductRepository _productRepository;
         public UnitOfWork(AppDbContext appDbContext)
         {
             _context = appDbContext;
         }
-
         public IOrderRepository Order => _orderRepository = _orderRepository ?? new OrderRepository(_context);
+
+        public IProductRepository Product => _productRepository = _productRepository ?? new ProductRepository(_context);
 
         public void Commit()
         {
