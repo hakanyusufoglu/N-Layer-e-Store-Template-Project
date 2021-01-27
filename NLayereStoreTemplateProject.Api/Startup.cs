@@ -50,6 +50,7 @@ namespace NLayereStoreTemplateProject.Api
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICategoryService, CategoryService>();
             services.AddControllers();
 
 
