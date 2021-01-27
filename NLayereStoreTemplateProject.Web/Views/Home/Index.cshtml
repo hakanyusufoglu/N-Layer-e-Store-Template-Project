@@ -57,11 +57,16 @@
 
                             <img class="card-img-top p-1" src="@Url.Content(item.ImageFile)" />
                             <div class="card-body">
-                                <h5 class="card-title"><a href="#">@item.Name</a></h5>
-                                <h6 class="card-text"><strong>@item.Price</strong></h6>
-                                <p class="card-text">
-                                    @item.Description
+                                <p class="card-text text-center" style=" color:#8D99AE; font-size:12px">
+                                <a class="text-secondary" href="#">
+                                    <strong>
+                                        Depolama
+                                    </strong>
+                                </a>
                                 </p>
+                                <h5 class="card-title text-center"><a asp-controller="Home" asp-action="ProductDetails" asp-route-id="@item.ProductId">@item.Name</a></h5>
+                                <h6 class="card-text text-center"><strong>@item.Price ₺</strong></h6>
+                              
 
                                 <a href="#" class=" btn btn-primary btn-block">Buy Now !</a>
 
