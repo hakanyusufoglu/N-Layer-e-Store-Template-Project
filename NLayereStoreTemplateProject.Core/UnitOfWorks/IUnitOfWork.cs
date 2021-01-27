@@ -9,6 +9,8 @@ namespace NLayereStoreTemplateProject.Core.UnitOfWorks
    public interface IUnitOfWork
     {
         IOrderRepository Order { get; }
+        IProductRepository Product { get;}
+        ICategoryRepository Category { get; }
         Task CommitAsync(); //eğer database'e savechangeAsync() metodu istenirse bu metotla çağırılacak.
         void Commit(); //eğer database'e savechange() metodu istenirse bu metotla çağırılacak.
     }

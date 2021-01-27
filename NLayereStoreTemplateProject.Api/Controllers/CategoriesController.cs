@@ -15,44 +15,50 @@ namespace NLayereStoreTemplateProject.Api.Controllers
     [ApiController]
     public class CategoriesController : ControllerBase
     {
-        private readonly IService<Category> _service;
+        private readonly ICategoryService _categoryService;
         private readonly IMapper _mapper;
 
-        public CategoriesController(IService<Category> service,IMapper mapper)
+        public CategoriesController(ICategoryService categoryService,IMapper mapper)
         {
-            _service = service;
+            _categoryService = categoryService;
             _mapper = mapper;
         }
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var categories = await _service.GetAllAsync();
+            var categories = await _categoryService.GetAllAsync();
             return Ok(_mapper.Map<IEnumerable<CategoryDto>>(categories)); // categoriesi categoryDto'ya çevirki kullanıcı sadece belirlenen alanları görsün.
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var category = await _service.GetByIdAsync(id);
+            var category = await _categoryService.GetByIdAsync(id);
             return Ok(_mapper.Map<CategoryDto>(category));
+        }
+        [HttpGet("{id}/products")]
+        public async Task<IActionResult> GetWithProductsByIdAsync(int id)
+        {
+            var category = await _categoryService.GetWithProductsByIdAsync(id);
+            return Ok(_mapper.Map<CategoryWithProductsDto>(category));
         }
         [HttpPost]
         public async Task<IActionResult> Save(CategoryDto categoryDto)
         {
-            var newCategory = await _service.AddAsync(_mapper.Map<Category>(categoryDto));
+            var newCategory = await _categoryService.AddAsync(_mapper.Map<Category>(categoryDto));
             return Created(string.Empty, _mapper.Map<CategoryDto>(newCategory));
         }
 
         [HttpPut]
         public IActionResult Update(CategoryDto categoryDto)
         {
-            _service.Update(_mapper.Map<Category>(categoryDto));
+            _categoryService.Update(_mapper.Map<Category>(categoryDto));
             return NoContent();
         }
         [HttpDelete("{id}")]
         public IActionResult Remove(int id)
         {
-            var entity = _service.GetByIdAsync(id).Result;
-            _service.Remove(entity);
+            var entity = _categoryService.GetByIdAsync(id).Result;
+            _categoryService.Remove(entity);
             return NoContent();
         }
         //[HttpPost]

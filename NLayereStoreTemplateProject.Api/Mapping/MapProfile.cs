@@ -28,6 +28,11 @@ namespace NLayereStoreTemplateProject.Api.Mapping
             CreateMap<Product, ProductDto>();
             CreateMap<ProductDto, Product>();
 
+            CreateMap<Product, ProductWithCategoryDto>();
+            CreateMap<ProductWithCategoryDto, Product>();
+
+            CreateMap<Category, CategoryWithProductsDto>();
+            CreateMap<CategoryWithProductsDto, Category>();
 
         }
     }

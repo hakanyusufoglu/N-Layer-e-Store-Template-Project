@@ -15,42 +15,48 @@ namespace NLayereStoreTemplateProject.Api.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly IService<Product> _service;
+        private readonly   IProductService _productservice;
         private readonly IMapper _mapper;
-        public ProductsController(IService<Product> service,IMapper mapper)
+        public ProductsController(IProductService productService,IMapper mapper)
         {
-            _service = service;
+            _productservice = productService;
             _mapper = mapper;
         }
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var products = await _service.GetAllAsync();
+            var products = await _productservice.GetAllAsync();
             return Ok(_mapper.Map<IEnumerable<ProductDto>>(products));
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var product = await _service.GetByIdAsync(id);
+            var product = await _productservice.GetByIdAsync(id);
             return Ok(_mapper.Map<ProductDto>(product));
+        }
+        [HttpGet("{id}/category")]
+        public async Task<IActionResult> GetWithCategoryById(int id)
+        {
+            var product = await _productservice.GetWithCategoryByIdAsync(id);
+            return Ok(_mapper.Map<ProductWithCategoryDto>(product));
         }
         [HttpPost]
         public async Task<IActionResult> Save(ProductDto productDto)
         {
-            var newProduct=await _service.AddAsync(_mapper.Map<Product>(productDto));
+            var newProduct=await _productservice.AddAsync(_mapper.Map<Product>(productDto));
             return Ok(_mapper.Map<ProductDto>(newProduct));
         }
         [HttpPut]
         public IActionResult Update(ProductDto productDto)
         {
-            _service.Update(_mapper.Map<Product>(productDto));
+            _productservice.Update(_mapper.Map<Product>(productDto));
             return NoContent();
         }
         [HttpDelete("{id}")]
         public IActionResult Remove(int id)
         {
-            var entity = _service.GetByIdAsync(id).Result;
-            _service.Remove(entity);
+            var entity = _productservice.GetByIdAsync(id).Result;
+            _productservice.Remove(entity);
             return NoContent();
         }
     }
