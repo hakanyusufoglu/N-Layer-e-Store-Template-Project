@@ -41,5 +41,18 @@ namespace NLayereStoreTemplateProject.Web.ApiService
                      return null;
             }
         }
+        public async Task<ProductWithCategoryDto> GetProductWithCategoryAsync(int id)
+        {
+     
+            var response = await _httpClient.GetAsync($"products/{id}/category");
+            if (response.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<ProductWithCategoryDto>(await response.Content.ReadAsStringAsync());
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

@@ -1,0 +1,38 @@
+﻿<div style="background-color: #7952b3">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg" style="background-color: #7952b3">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <strong class="text-light">
+                        Electronic Market
+                    </strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="False" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item @(ViewContext.RouteData.Values["Action"].ToString() == "Index"?"active":"")">
+
+                            <span class="nav-link">  @Html.ActionLink("Store", "Index", "Home", null, new { @class = "nav-link text-light" }) </span>
+
+                        </li>
+
+
+                        <li class="nav-item @(ViewContext.RouteData.Values["Action"].ToString() == "Index1"?"active":"")">
+
+                            <span class="nav-link">  @Html.ActionLink("About", "Index", "Home", null, new { @class = "nav-link text-light" }) </span>
+
+                        </li>
+                        <li class="nav-item @(ViewContext.RouteData.Values["Action"].ToString() == "Index2"?"active":"")">
+
+                            <span class="nav-link">  @Html.ActionLink("Contact", "Index", "Home", null, new { @class = "nav-link text-light" }) </span>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>

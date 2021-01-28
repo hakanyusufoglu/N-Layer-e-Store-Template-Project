@@ -1,7 +1,7 @@
-﻿@model ProductDto
+﻿@model ProductWithCategoryDto
 @{
     ViewData["Title"] = "ProductDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1>@Model.Name</h1>
+<h1>@Model.Name kategorisi: @Model.Category.CategoryName</h1>
 

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProductDto>
+﻿@model CategoryWithProductsDto
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,12 +12,12 @@
             <h2>
                 Electronic Market
             </h2>
-            @using (Html.BeginForm("ProductByCategory","Home"))
-            { 
-                
-        <select class="custom-select" onchange="this.form.submit();" id="selectedCategoryId" name="selectedCategoryId" asp-items="ViewBag.Categories">
-            <option value="All Product" id="0">All Products</option>
-        </select>
+            @using (Html.BeginForm("ProductByCategory", "Home"))
+            {
+
+                <select class="custom-select" onchange="this.form.submit();" id="selectedCategoryId" name="selectedCategoryId" asp-items="ViewBag.Categories">
+                    <option value="All Product" id="0">All Products</option>
+                </select>
                 
             }
         </div>
@@ -25,10 +25,9 @@
             <!--right section-->
             <!--slider alan-->
             <partial name="~/Views/Shared/PartialViews/_SliderPartialView.cshtml" />
-            <div class="col-12 text-center">All Products</div>
-            <!--   <partial name="~/Views/Home/GetProductsPartial.cshtml" model="Model" />-->
+            <div class="col-12 text-center">@Model.CategoryName Products</div>
             <div class="row py-5">
-                @foreach (var item in Model)
+                @foreach (var item in Model.Products)
                 {
                     <div class="col-4 mb-4">
                         <div class="card">
@@ -59,7 +58,7 @@
 
 
             </div>
-            @if (Model.Count() > 6)
+            @if (Model.Products.Count() > 6)
             {
                 <div class="row py-2">
 

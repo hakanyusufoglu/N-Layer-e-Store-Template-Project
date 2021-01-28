@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ProductDto>
+<!--Henüz kullanılmıyor dikkate almayınız-->
+<div class="row py-5">
+    @foreach (var item in Model)
+    {
+        <div class="col-4 mb-4">
+            <div class="card">
+
+                <img class="card-img-top p-1" src="@Url.Content(item.ImageFile)" />
+                <div class="card-body">
+                    <p class="card-text text-center" style=" color:#8D99AE; font-size:12px">
+                        <a class="text-secondary" href="#">
+                            <strong>
+
+                            </strong>
+                        </a>
+                    </p>
+                    <h5 class="card-title text-center"><a asp-controller="Home" asp-action="ProductDetails" asp-route-id="@item.ProductId">@item.Name</a></h5>
+                    <h6 class="card-text text-center"><strong>@item.Price ₺</strong></h6>
+
+
+                    <a href="#" class=" btn btn-primary btn-block">Buy Now !</a>
+
+
+
+                </div>
+            </div>
+        </div>
+        @if (Model.Count() > 6)
+        {
+            <div class="row py-2">
+
+                <div class="col-12" style="background-color: #CB53A5">
+
+                    <a class="btn btn-block text-light " href="#"> Show More</a>
+
+                </div>
+
+            </div>
+        }
+    }
+
+</div>
