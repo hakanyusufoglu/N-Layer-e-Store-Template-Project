@@ -1,8 +1,55 @@
-﻿
+﻿@model IEnumerable<UserDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+<!--Users Page-->
 
-<h1>Users</h1>
+<!--navbar-->
+<partial name="~/Views/Shared/PartialViews/AdminPartialViews/_AdminContentHeaderPartialView.cshtml" />
+<div class="container-fluid">
+    <div class="row mb-4 " >
+        <div class="col-8  pl-0" >
+            <h4>User Details </h4>
+        </div>
+        <div class="col-4 pr-0 ">
+            <div>
+                <button type="button" class="btn btn-info " style="float:right;">
+                    <i class="fa fa-plus mr-2"></i>
+                    Add New
+                </button>
+            </div>
 
+        </div>
+    </div>
+    <div class="row ">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Lastname</th>
+                    <th>Adress</th>
+                    <th>Phone</th>
+                    <th>Username</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.LastName</td>
+                        <td>@item.Adress</td>
+                        <td>@item.Phone</td>
+                        <td>@item.UserName</td>
+                        <td>
+                            <a href="#" class="edit " title="Edit" data-toggle="tooltip"><i class="material-icons text-warning" >&#xE254;</i></a>
+                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons text-danger" >&#xE872;</i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

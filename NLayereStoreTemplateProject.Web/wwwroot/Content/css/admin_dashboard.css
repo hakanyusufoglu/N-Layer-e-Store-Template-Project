@@ -23,7 +23,7 @@ li{
     text-align: center;
     padding: 0 1rem;
   /*  font-weight: 800;*/
-    font-size: .65rem;
+    font-size: .70rem;
     color: rgba(255,255,255,.4);
 }
 .collapse-header{
@@ -77,10 +77,10 @@ ion-icon {
      background-color:  #00c0ef !important;
 }
 .bg-aqua-moreinfo{
-    background-color:  #3ba0da !important;;
+    background-color:  #3ba0da !important;
 }
 .bg-danger-moreinfo{
-    background-color:  #b42735 !important;;
+    background-color:  #b42735 !important;
 }
 
 .card-btn-text-white{

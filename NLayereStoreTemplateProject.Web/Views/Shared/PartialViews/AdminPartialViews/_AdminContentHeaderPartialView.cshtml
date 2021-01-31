@@ -1,0 +1,67 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<!--right section-->
+<div class="row">
+    <div class="col-12" style="background-color:#6e8ef0">
+        <nav class="navbar navbar-expand ">
+            <!--Menubar-->
+            
+            <div class="collapse navbar-collapse ">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown active">
+                        <a href="#messageNavbarDropDownMenuLink" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false" class="nav-link">
+                            <i class="far fa-envelope text-white"></i>
+                            <span class="label  bg-primary badge"
+                                  style="padding: 2px,2px,2px,2px;">1</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="messageNavbarDropDownMenuLink">
+                            Message Field 
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link " href="#notifyNavbarDropDownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="far fa-bell"></i>
+                            <span class="label  bg-success badge"
+                                  style="padding: 2px,2px,2px,2px;">4</span>
+                        </a>
+                        <div class="dropdown-menu " aria-labelledby="notifyNavbarDropDownMenuLink">
+                            Notification Field
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link " href="#profileNavbarDropDownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="https://ebs.teb.org.tr/smart/AdminLTE-2.3.0/dist/img/user2-160x160.jpg"
+                                 class="user-image" alt="User Image">
+                            <small>    Hakan Yusufoğlu </small>
+                        </a>
+                        <div class="dropdown-menu " aria-labelledby="profileNavbarDropDownMenuLink">
+                            Profile Field
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+<div class="container-fluid">
+    <!--content-->
+    <div class="row  py-2">
+        <!--breadcumps section-->
+        <nav aria-label="breadcrumb" style="width:100%;">
+            <ol class="breadcrumb ">
+                <li class="breadcrumb-item  ">
+
+                    <a class="bread-text " href="#">
+                        <i class="fas fa-tachometer-alt"></i>
+                        @(ViewContext.RouteData.Values["Controller"].ToString() == "Admin" ? "Dashboard" : ViewContext.RouteData.Values["Controller"].ToString())
+                    </a>
+                </li>
+            </ol>
+        </nav>
+    </div>
+</div>

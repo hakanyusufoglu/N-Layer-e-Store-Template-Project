@@ -12,23 +12,24 @@
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
     <title>E Shope</title>
 </head>
 
 <body>
+
     <div id="solMenu">
         <div class="container-fluid">
             <div class="row">
                 <div class=" col-md-2 col-12" style="background-color:#4e73df">
                     <div style="height:1000px">
-                        <a href="#">
+                        <a href="@Url.Action("Index","Admin")">
                             <div class="row  pt-3">
                                 <div class="col-md-12 text-center text-white">
                                     <i style="font-size: 2rem;" class="fas fa-laugh-wink rotate-n-15"></i>
                                     <strong class="mx-2">
                                         Electronic Market
-
                                     </strong>
 
                                 </div>
@@ -37,8 +38,10 @@
                         <div class=" border mt-4 "></div>
                         <div class="row mt-4 ">
                             <ul class="navbar-nav  d-block " style="width:93%;">
-                                <li class="nav-item  active  ">
-                                    <a class="nav-link   " href="#">
+                                <!--Eğer routeta ki controller Admin ise dashboard listesini aktif et-->
+                                <li class="nav-item  @(ViewContext.RouteData.Values["Controller"].ToString() == "Admin"?"active":"")  ">
+                                    <!--Admin controllerın içinde ki Index sayfasına yönlendir-->
+                                    <a class="nav-link   " href="@Url.Action("Index","Admin")">
                                         <i class="fas fa-fw fa-tachometer-alt"></i>
                                         <span class="ml-2"><strong>Dashboard</strong></span>
                                     </a>
@@ -51,26 +54,26 @@
                         <div class=" border mt-2"></div>
                         <div class="row mt-4">
                             <div class="sidebar-heading">
-                                OPERATIONS
+                                Operations
                             </div>
                             <ul class="navbar-nav accordion  d-block " style="width:93%;">
-                                <li class="nav-item ">
-                                    <a class="nav-link  " href="#">
+                                <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Orders"?"active":"")">
+                                    <a class="nav-link  " href="@Url.Action("Index","Orders")">
                                         <i class="fas fa-dolly-flatbed"></i>
                                         <span class="ml-2"><strong>Order</strong></span>
 
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link  " href="#">
+                                <li class="nav-item  @(ViewContext.RouteData.Values["Controller"].ToString() == "Products"?"active":"")">
+                                    <a class="nav-link  " href="@Url.Action("Index","Products")">
 
                                         <i class="fas fa-fw fa-box"></i>
                                         <span class="ml-2"><strong>Product</strong></span>
 
                                     </a>
                                 </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link  " href="#">
+                                <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Users"?"active":"") ">
+                                    <a class="nav-link  " href="@Url.Action("Index","Users")">
                                         <i class="fas fa-users-cog"></i>
                                         <span class="ml-2"><strong>User</strong></span>
 
@@ -84,13 +87,13 @@
                         <div class=" border mt-2"></div>
                         <div class="row mt-4">
                             <div class="sidebar-heading">
-                                Statistics
+                                Settings Panel
                             </div>
                             <ul class="navbar-nav  d-block " style="width:93%;">
                                 <li class="nav-item ">
-                                    <a class="nav-link " href="www.google.com">
+                                    <a class="nav-link " href="#">
                                         <i class="fas fa-fw fa-cog"></i>
-                                        <span class="ml-2"><strong>User Details </strong></span>
+                                        <span class="ml-2"><strong>Settings </strong></span>
 
                                     </a>
                                 </li>
@@ -99,9 +102,11 @@
                         </div>
                     </div>
                 </div>
-                @RenderBody()
+                <div class="col-10">
+                    @RenderBody()
+                    </div>
+                </div>
             </div>
-        </div>
     </div>
     <script src="~/Content/js/ionicons.js"></script>
     <script src="~/Content/js/jquery-3.5.1.slim.min.js"></script>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NLayereStoreTemplateProject.Web.ApiService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,16 @@ namespace NLayereStoreTemplateProject.Web.Controllers
 {
     public class UsersController : Controller
     {
-        public IActionResult Index()
+        private readonly UserApiService _userApiService;
+        public UsersController(UserApiService userApiService)
         {
-            return View();
+            _userApiService = userApiService;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var users = await _userApiService.GetAllAsync();
+            return View(users);
         }
     }
 }

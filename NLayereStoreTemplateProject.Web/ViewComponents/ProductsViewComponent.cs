@@ -9,7 +9,7 @@ namespace NLayereStoreTemplateProject.Web.ViewComponents
 { //Henüz kullanılmıyor dikkate almayınız.
     public class ProductsViewComponent:ViewComponent
     {
-        private ProductApiService _productApiService;
+        private readonly ProductApiService _productApiService;
         public ProductsViewComponent(ProductApiService productApiService)
         {
             _productApiService = productApiService;

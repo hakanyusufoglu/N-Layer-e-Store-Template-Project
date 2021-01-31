@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NLayereStoreTemplateProject.Web.ApiService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ namespace NLayereStoreTemplateProject.Web.Controllers
 {
     public class OrdersController : Controller
     {
+      
         public IActionResult Index()
         {
             return View();
