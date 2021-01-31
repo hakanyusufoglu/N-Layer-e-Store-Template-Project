@@ -4,5 +4,151 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Admin Page</h1>
 
+<div class="col-10">
+    <!--right section-->
+    <div class="row">
+        <div class="col-12" style="background-color:#6e8ef0">
+            <nav class="navbar navbar-expand ">
+                <!--Menubar-->
+                <div class="collapse navbar-collapse ">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown active">
+                            <a href="#messageNavbarDropDownMenuLink" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false" class="nav-link">
+                                <i class="far fa-envelope text-white"></i>
+                                <span class="label  bg-primary badge"
+                                      style="padding: 2px,2px,2px,2px;">1</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="messageNavbarDropDownMenuLink">
+                                Message Field
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link " href="#notifyNavbarDropDownMenuLink"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="far fa-bell"></i>
+                                <span class="label  bg-success badge"
+                                      style="padding: 2px,2px,2px,2px;">4</span>
+                            </a>
+                            <div class="dropdown-menu " aria-labelledby="notifyNavbarDropDownMenuLink">
+                                Notification Field
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link " href="#profileNavbarDropDownMenuLink"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="https://ebs.teb.org.tr/smart/AdminLTE-2.3.0/dist/img/user2-160x160.jpg"
+                                     class="user-image" alt="User Image">
+                                <small>    Hakan Yusufoğlu </small>
+                            </a>
+                            <div class="dropdown-menu " aria-labelledby="profileNavbarDropDownMenuLink">
+                                Profile Field
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <!--content-->
+        <div class="row  py-2">
+            <!--breadcumps section-->
+            <nav aria-label="breadcrumb" class="ml-3 mr-3" style="width:100%;">
+                <ol class="breadcrumb ">
+                    <li class="breadcrumb-item  ">
+
+                        <a class="bread-text " href="#">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item mx-1">
+
+                        <a class="bread-text " href="#">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Statistic
+                        </a>
+                    </li>
+                    </ol>
+            </nav>
+        </div>
+
+        <div class="row" >
+            <!--dashboard content-->
+            <div class="col-4">
+                <div class="card bg-success " >
+                    <div class="card-body border-0 text-white">
+                        <div class="row">
+                            <div class="col-6">
+                                <h3> <strong>150</strong> </h3>
+                                <h6 class="card-title border-0 text-white">New Order</h6>
+                            </div>
+                            <div class="col-6">
+                                <div class="icon">
+                                    <ion-icon name="bag-handle-outline"></ion-icon>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <a class="btn bg-green card-btn-text-white" href="#">
+
+                        More Info
+
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="card bg-aqua ">
+                    <div class="card-body border-0 text-white">
+                        <div class="row">
+                            <div class="col-6">
+                                <h3> <strong> 75 </strong> </h3>
+                                <h6 class="card-title border-0 text-white">New Employee</h6>
+                            </div>
+                            <div class="col-6">
+                                <div class="icon">
+                                    <ion-icon name="person-add-outline"></ion-icon>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <a class="btn bg-aqua-moreinfo card-btn-text-white" href="#">
+                        More Info
+                    </a>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card bg-danger ">
+                    <div class="card-body border-0 text-white">
+                        <div class="row">
+                            <div class="col-6">
+                                <h3> <strong> 1997 </strong> </h3>
+                                <h6 class="card-title border-0 text-white">Total Employee</h6>
+                            </div>
+                            <div class="col-6">
+                                <div class="icon">
+                                    <ion-icon name="person-outline"></ion-icon>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <a class="btn bg-danger-moreinfo card-btn-text-white" href="#">
+                        More Info
+                    </a>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
