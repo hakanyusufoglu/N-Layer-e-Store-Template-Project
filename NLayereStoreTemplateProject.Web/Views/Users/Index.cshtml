@@ -51,7 +51,7 @@
                         <strong>Username</strong>
                         <input type="text" name="UserName" class="form-control" />
                         <br />
-                        <button type="submit" class="btn btn-primary mb-2" style="float:right">Update User</button>
+                        <button type="submit" class="btn btn-primary mb-2" style="float:right">Add User</button>
 
 
                     </div>
@@ -80,10 +80,10 @@
 
 
     <div class="row">
-        <table class="table table-bordered order-list" id="StudentGrid">
+        <table class="table table-bordered order-list" >
             <thead>
                 <tr>
-                    <th id="btnDeneme">Name</th>
+                    <th >Name</th>
                     <th>Last Name</th>
                     <th>Adress</th>
                     <th>Phone</th>
@@ -106,7 +106,7 @@
 
                             @*<a href="javascript:void(0)" onclick="OrtakDuzenle()" class="btn btn-primary details" title="Edit"><i class="material-icons text-warning">&#xE254;</i></a>*@
 
-                            <a href="javascript:void(0)"  data-toggle="modal" data-target="#myModal" onclick="OrtakDuzenle(@item.UserId)"><i class="material-icons text-warning">&#xE254;</i></a>
+                            <a href="javascript:void(0)"  data-toggle="modal" data-target="#myModal" onclick="FuncPartialUpdate(@item.UserId)"><i class="material-icons text-warning">&#xE254;</i></a>
 
                             <a asp-action="Remove" asp-route-id="@item.UserId" asp class="delete " title="Delete" data-toggle="tooltip"><i class="material-icons text-danger">&#xE872;</i></a>
                         </td>
@@ -115,10 +115,10 @@
             </tbody>
         </table>
                 <script type="text/javascript">
-            function OrtakDuzenle(ortakId) {
+                function FuncPartialUpdate(userId) {
 
                 var url = '@Url.Action("Update", "Users")';
-                url += '/' + ortakId;
+                url += '/' + userId;
                 $("#ModalBody").load(url);
             }
         </script>
