@@ -15,6 +15,12 @@ namespace NLayereStoreTemplateProject.Service.Services
         {
 
         }
+
+        public async Task<IEnumerable<Order>> GetAllWithProductAndUser()
+        {
+            return await _unitOfWork.Order.GetAllWithProductAndUser();
+        }
+
         public async Task<Order> GetOrderWithProductAndUser(int orderId)
         {
             return await _unitOfWork.Order.GetOrderWithProductAndUser(orderId);

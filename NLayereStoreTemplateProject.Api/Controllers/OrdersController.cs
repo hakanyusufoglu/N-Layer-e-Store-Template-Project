@@ -40,7 +40,13 @@ namespace NLayereStoreTemplateProject.Api.Controllers
         public async Task<IActionResult> GetWithProductandUserById(int id)
         {
             var order = await _orderService.GetOrderWithProductAndUser(id);
-            return Ok(order);
+            return Ok(_mapper.Map<OrderWithProductsAndUserDto>(order));
+        }
+        [HttpGet("products/user")]
+        public async Task<IActionResult> GetAllProductAndUser()
+        {
+            var orders = await _orderService.GetAllWithProductAndUser();
+            return Ok(_mapper.Map<IEnumerable<OrderWithProductsAndUserDto>>(orders));
         }
         [HttpPost]
         public async Task<IActionResult> Save(OrderDto orderDto)

@@ -9,5 +9,6 @@ namespace NLayereStoreTemplateProject.Core.Services
    public interface IProductService:IService<Product>
     {
         Task<Product> GetWithCategoryByIdAsync(int productId);
+        Task<IEnumerable<Product>> GetAllWithCategoryAsync();
     }
 }

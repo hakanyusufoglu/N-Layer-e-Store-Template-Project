@@ -22,6 +22,9 @@ namespace NLayereStoreTemplateProject.Api.Mapping
             CreateMap<Order, OrderDto>();
             CreateMap<OrderDto, Order>();
 
+            CreateMap<Order, OrderWithProductsAndUserDto>();
+            CreateMap<OrderWithProductsAndUserDto, Order>();
+
             CreateMap<User, UserDto>();
             CreateMap<UserDto, User>();
 
@@ -31,9 +34,13 @@ namespace NLayereStoreTemplateProject.Api.Mapping
             CreateMap<Product, ProductWithCategoryDto>();
             CreateMap<ProductWithCategoryDto, Product>();
 
+            CreateMap<Product, ProductWithCategoryAndBrandDto>();
+            CreateMap<ProductWithCategoryAndBrandDto,Product>();
+
             CreateMap<Category, CategoryWithProductsDto>();
             CreateMap<CategoryWithProductsDto, Category>();
 
+       
         }
     }
 }

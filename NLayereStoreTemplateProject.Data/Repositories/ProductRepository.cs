@@ -18,5 +18,10 @@ namespace NLayereStoreTemplateProject.Data.Repositories
         {
             return await _appDbContext.Products.Include(x => x.Category).FirstOrDefaultAsync(x => x.ProductId == productId);
         }
+
+        public async Task<IEnumerable<Product>> GetAllWithCategoryAsync()
+        {
+            return await _appDbContext.Products.Include(x => x.Category).Include(x=>x.Brand).ToListAsync();
+        }
     }
 }

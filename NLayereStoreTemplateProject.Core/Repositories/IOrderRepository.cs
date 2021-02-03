@@ -9,5 +9,6 @@ namespace NLayereStoreTemplateProject.Core.Repositories
   public  interface IOrderRepository:IRepository<Order>
     {
         Task<Order> GetOrderWithProductAndUser(int orderId);
+        Task<IEnumerable<Order>> GetAllWithProductAndUser();
     }
 }
