@@ -4,17 +4,17 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 <!--Users Page-->
-
 <!--navbar-->
+
 <partial name="~/Views/Shared/PartialViews/AdminPartialViews/_AdminContentHeaderPartialView.cshtml" />
 <div class="container-fluid">
-    <div class="row mb-4 " >
-        <div class="col-8  pl-0" >
+    <div class="row mb-4 ">
+        <div class="col-8  pl-0">
             <h4>User Details </h4>
         </div>
         <div class="col-4 pr-0 ">
             <div>
-                <button type="button" class="btn btn-info " style="float:right;">
+                <button id="newRowBtn" type="button" class="btn btn-info " style="float:right;" data-toggle="modal" data-target="#ModalAddPage">
                     <i class="fa fa-plus mr-2"></i>
                     Add New
                 </button>
@@ -22,12 +22,69 @@
 
         </div>
     </div>
-    <div class="row ">
-        <table class="table table-bordered">
+    <!--Add new user popup modal page-->
+    <div class="modal" id="ModalAddPage" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Add New User</h2>
+                </div>
+                <form method="post" action="/Users/Save">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <strong> Name</strong>
+                                <input type="text" name="Name" class="form-control" />
+                            </div>
+                            <div class="col-6">
+                                <strong> Last Name</strong>
+                                <input type="text" name="LastName" class="form-control" />
+                            </div>
+                        </div>
+                        <br />
+                        <strong>Phone</strong>
+                        <input type="text" name="Phone" class="form-control" />
+
+                        <strong>Adress</strong>
+                        <input type="text" name="Adress" class="form-control" />
+                        <br />
+                        <strong>Username</strong>
+                        <input type="text" name="UserName" class="form-control" />
+                        <br />
+                        <button type="submit" class="btn btn-primary mb-2" style="float:right">Add User</button>
+
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--Update user popup modal page-->
+    <div class="modal" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Update User</h2>
+                </div>
+                <form method="post" action="/Users/Update">
+                    <div class="modal-body" id="ModalBody">
+
+
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <table class="table table-bordered order-list" >
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Lastname</th>
+                    <th>Last Name</th>
                     <th>Adress</th>
                     <th>Phone</th>
                     <th>Username</th>
@@ -44,12 +101,28 @@
                         <td>@item.Phone</td>
                         <td>@item.UserName</td>
                         <td>
-                            <a href="#" class="edit " title="Edit" data-toggle="tooltip"><i class="material-icons text-warning" >&#xE254;</i></a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons text-danger" >&#xE872;</i></a>
+
+
+
+                            @*<a href="javascript:void(0)" onclick="OrtakDuzenle()" class="btn btn-primary details" title="Edit"><i class="material-icons text-warning">&#xE254;</i></a>*@
+
+                            <a href="javascript:void(0)"  data-toggle="modal" data-target="#myModal" onclick="OrtakDuzenle(@item.UserId)"><i class="material-icons text-warning">&#xE254;</i></a>
+
+                            <a asp-action="Remove" asp-route-id="@item.UserId" asp class="delete " title="Delete" data-toggle="tooltip"><i class="material-icons text-danger">&#xE872;</i></a>
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
+                <script type="text/javascript">
+            function OrtakDuzenle(userId) {
+
+                var url = '@Url.Action("Update", "Users")';
+                url += '/' + userId;
+                $("#ModalBody").load(url);
+            }
+        </script>
     </div>
 </div>
+
+
