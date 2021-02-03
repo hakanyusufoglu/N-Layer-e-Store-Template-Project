@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace NLayereStoreTemplateProject.Web.ApiService
@@ -29,6 +30,57 @@ namespace NLayereStoreTemplateProject.Web.ApiService
                 userDtos = null;
             }
             return userDtos;
+        }
+        public async Task<UserDto> AddAsync(UserDto userDto)
+        {
+            var stringContent = new StringContent(JsonConvert.SerializeObject(userDto), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync("users", stringContent);
+            if (response.IsSuccessStatusCode)
+            {
+                userDto = JsonConvert.DeserializeObject<UserDto>(await response.Content.ReadAsStringAsync());
+                return userDto;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public async Task<bool> Update(UserDto userDto)
+        {
+            var stringContent = new StringContent(JsonConvert.SerializeObject(userDto), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PutAsync("users", stringContent);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public async Task<bool> Remove(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"users/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public async Task<UserDto> GetByIdAsync(int id)
+        {
+            var response =await _httpClient.GetAsync($"users/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<UserDto>(await response.Content.ReadAsStringAsync());
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
