@@ -10,5 +10,6 @@ namespace NLayereStoreTemplateProject.Core.Repositories
     {
         //idye sahip olan ürünün kategoriside gelsin;
         Task<Product> GetWithCategoryByIdAsync(int productId);
+        Task<IEnumerable<Product>> GetAllWithCategoryAsync();
     }
 }

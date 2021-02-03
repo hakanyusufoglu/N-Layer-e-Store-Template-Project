@@ -19,5 +19,12 @@ namespace NLayereStoreTemplateProject.Data.Repositories
         {
             return await _appDbContext.Orders.Include(x => x.Product).Include(x => x.User).SingleOrDefaultAsync(x => x.OrderId == orderId);
         }
+
+        public async Task<IEnumerable<Order>> GetAllWithProductAndUser()
+        {
+            return await _appDbContext.Orders.Include(x => x.Product).Include(x => x.User).ToListAsync();
+        }
+
+     
     }
 }

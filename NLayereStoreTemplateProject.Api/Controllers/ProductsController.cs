@@ -40,6 +40,12 @@ namespace NLayereStoreTemplateProject.Api.Controllers
             var product = await _productservice.GetWithCategoryByIdAsync(id);
             return Ok(_mapper.Map<ProductWithCategoryDto>(product));
         }
+        [HttpGet("category")]
+        public async Task<IActionResult> GetAllWithCategory()
+        {
+            var product = await _productservice.GetAllWithCategoryAsync();
+            return Ok(_mapper.Map<IEnumerable<ProductWithCategoryAndBrandDto>>(product));
+        }
         [HttpPost]
         public async Task<IActionResult> Save(ProductDto productDto)
         {
