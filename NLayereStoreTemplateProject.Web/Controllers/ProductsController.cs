@@ -9,16 +9,16 @@ namespace NLayereStoreTemplateProject.Web.Controllers
 {
     public class ProductsController : Controller
     {
-       //private readonly ProductApiService _productApiService;
-        /*public ProductsController(ProductApiService productApiService)
+       private readonly ProductApiService _productApiService;
+        public ProductsController(ProductApiService productApiService)
         {
             _productApiService = productApiService;
-        }*/
-      
-        public IActionResult Index()
+        }
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
-           // var products = await _productApiService.GetAllAsync();
-            return View();
+            var products = await _productApiService.GetAllProductwithCategoryAsync();
+            return View(products);
         }
     }
 }

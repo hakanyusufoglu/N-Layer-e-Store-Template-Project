@@ -55,6 +55,17 @@ namespace NLayereStoreTemplateProject.Web.ApiService
                 return null;
             }
         }
-       
+        public async Task<IEnumerable<ProductWithCategoryAndBrandDto>> GetAllProductwithCategoryAsync()
+        {
+            var response = await _httpClient.GetAsync($"products/category");
+            if (response.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<IEnumerable<ProductWithCategoryAndBrandDto>>(await response.Content.ReadAsStringAsync());
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

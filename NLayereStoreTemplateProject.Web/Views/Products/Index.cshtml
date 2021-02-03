@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProductDto>
+﻿@model IEnumerable<ProductWithCategoryAndBrandDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -11,8 +11,27 @@
     <div class="row ">
        <table class="table table-bordered">
            <thead>
-
+               <tr>
+                   <th>Name</th>
+                   <th>Price</th>
+                   <th>Unit Stock</th>
+                   <th>Category</th>
+                   <th>Brand Name</th>
+               </tr>
            </thead>
+           <tbody>
+               @foreach (var item in Model)
+               {
+                   <tr>
+                       <td>@item.Name</td>
+                       <td>@item.Price</td>
+                       <td>@item.UnitStock</td>
+                       <td>@item.Category.CategoryName</td>
+                       <td>@item.Brand.Name</td>
+                     
+                   </tr>
+               }
+           </tbody>
        </table>
     </div>
 </div>

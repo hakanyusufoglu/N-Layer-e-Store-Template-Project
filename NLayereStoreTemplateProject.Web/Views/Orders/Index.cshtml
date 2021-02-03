@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<OrderWithProductsAndUserDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -6,4 +6,36 @@
 
 <!--navbar-->
 <partial name="~/Views/Shared/PartialViews/AdminPartialViews/_AdminContentHeaderPartialView.cshtml" />
+<div class="container-fluid">
+    <div class="row">
+        <table class="table table-bordered order-list">
+            <thead>
+                <tr>
+                    <th>Order Date  </th>
+                    <th>User Name</th>
+                    <th>Lastname</th>
+                    <th>Phone</th>
+                    <th>Product Name</th>
+                    <th>Unit Price</th>
+                    <th>Total Price</th>
 
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.dateTime</td>
+                        <td>@item.User.Name</td>
+                        <td>@item.User.LastName</td>
+                        <td>@item.User.Phone</td>
+                        <td>@item.Product.Name</td>
+                        <td>@item.UnitPrice</td>
+                        <td>@item.TotalPrice</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

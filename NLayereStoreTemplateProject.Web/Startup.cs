@@ -35,6 +35,9 @@ namespace NLayereStoreTemplateProject.Web
             {
                 option.BaseAddress = new Uri(Configuration["baseUrl"]);
             });
+            services.AddHttpClient<OrderApiService>(option => {
+                option.BaseAddress = new Uri(Configuration["baseUrl"]);
+            });
             services.AddAutoMapper(typeof(Startup));
             services.AddControllersWithViews();
         }

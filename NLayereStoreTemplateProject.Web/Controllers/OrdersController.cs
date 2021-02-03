@@ -9,10 +9,16 @@ namespace NLayereStoreTemplateProject.Web.Controllers
 {
     public class OrdersController : Controller
     {
-      
-        public IActionResult Index()
+        private readonly OrderApiService _orderApiService;
+        public OrdersController(OrderApiService orderApiService)
         {
-            return View();
+            _orderApiService = orderApiService;
+        }
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            var orders =await _orderApiService.GetAllOrderWithProductUserAsync();
+            return View(orders);
         }
     }
 }
