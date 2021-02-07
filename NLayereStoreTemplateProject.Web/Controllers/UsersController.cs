@@ -25,6 +25,7 @@ namespace NLayereStoreTemplateProject.Web.Controllers
         {
             return View();
         }
+    
         [HttpPost]
         public async Task<IActionResult> Save(UserDto userDto)
         {
@@ -32,6 +33,7 @@ namespace NLayereStoreTemplateProject.Web.Controllers
             return RedirectToAction("Index");
         }
      
+
         public async Task<IActionResult> Update(int id)
         {
             var user =await _userApiService.GetByIdAsync(id);

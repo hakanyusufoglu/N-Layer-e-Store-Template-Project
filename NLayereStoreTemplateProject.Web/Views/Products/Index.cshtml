@@ -9,7 +9,14 @@
 <partial name="~/Views/Shared/PartialViews/AdminPartialViews/_AdminContentHeaderPartialView.cshtml" />
 <div class="container-fluid">
     <div class="row ">
-       <table class="table table-bordered">
+        <div class="input-group ">
+            <input id="search" type="search" class="form-control" placeholder="Search..."/>
+            <label class="form-label"></label>
+            <button type="button" class="btn btn-primary">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+       <table class="table table-bordered mt-4">
            <thead>
                <tr>
                    <th>Name</th>
@@ -17,19 +24,23 @@
                    <th>Unit Stock</th>
                    <th>Category</th>
                    <th>Brand Name</th>
+                   <th>Actions</th>
                </tr>
            </thead>
            <tbody>
                @foreach (var item in Model)
                {
-                   <tr>
-                       <td>@item.Name</td>
-                       <td>@item.Price</td>
-                       <td>@item.UnitStock</td>
-                       <td>@item.Category.CategoryName</td>
-                       <td>@item.Brand.Name</td>
-                     
-                   </tr>
+               <tr>
+                   <td>@item.Name</td>
+                   <td>@item.Price</td>
+                   <td>@item.UnitStock</td>
+                   <td>@item.Category.CategoryName</td>
+                   <td>@item.Brand.Name</td>
+                   <td>
+                       <a asp-action="Edit" asp-route-id="@item.ProductId" title="Edit"><i class="material-icons text-warning">&#xE254;</i></a>
+                       <a asp-action="Remove" asp-route-id="@item.ProductId" title="Delete"><i class="material-icons text-danger">&#xE872;</i></a>
+                   </td>
+               </tr>
                }
            </tbody>
        </table>

@@ -8,7 +8,14 @@
 <partial name="~/Views/Shared/PartialViews/AdminPartialViews/_AdminContentHeaderPartialView.cshtml" />
 <div class="container-fluid">
     <div class="row">
-        <table class="table table-bordered order-list">
+        <div class="input-group ">
+            <input id="search" type="search" class="form-control" placeholder="Search..." />
+            <label class="form-label"></label>
+            <button type="button" class="btn btn-primary">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <table class="table table-bordered order-list mt-4">
             <thead>
                 <tr>
                     <th>Order Date  </th>
@@ -17,7 +24,9 @@
                     <th>Phone</th>
                     <th>Product Name</th>
                     <th>Unit Price</th>
+                    <th>Unit Count</th>
                     <th>Total Price</th>
+                    <th>Actions</th>
 
                 </tr>
             </thead>
@@ -31,7 +40,12 @@
                         <td>@item.User.Phone</td>
                         <td>@item.Product.Name</td>
                         <td>@item.UnitPrice</td>
+                        <td>@item.OrderCount</td>
                         <td>@item.TotalPrice</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.OrderId" title="Edit"><i class="material-icons text-warning">&#xE254;</i></a>
+                            <a asp-action="Remove" asp-route-id="@item.OrderId" title="Delete"><i class="material-icons text-danger">&#xE872;</i></a>
+                        </td>
                     </tr>
                 }
 
