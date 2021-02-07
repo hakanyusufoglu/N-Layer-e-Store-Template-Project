@@ -7,6 +7,7 @@ using NLayereStoreTemplateProject.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace NLayereStoreTemplateProject.Api.Controllers
@@ -33,6 +34,12 @@ namespace NLayereStoreTemplateProject.Api.Controllers
         {
             var user = await _service.GetByIdAsync(id);
             return Ok(_mapper.Map<UserDto>(user));
+        }
+        [HttpPost("search/{userName}")]
+        public async Task<IActionResult> SearchByUserNames(string userName)
+        {
+            var searchByUserName = await _service.Where(x=>x.Name.ToLower().Contains(userName.ToLower()));
+            return Ok(_mapper.Map<IEnumerable<UserDto>>(searchByUserName));
         }
         [HttpPost]
         public async Task<IActionResult> Save(UserDto userDto)

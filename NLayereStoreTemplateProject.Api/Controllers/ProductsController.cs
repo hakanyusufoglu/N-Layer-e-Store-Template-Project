@@ -46,6 +46,12 @@ namespace NLayereStoreTemplateProject.Api.Controllers
             var product = await _productservice.GetAllWithCategoryAsync();
             return Ok(_mapper.Map<IEnumerable<ProductWithCategoryAndBrandDto>>(product));
         }
+        [HttpPost("search/{productName}")]
+        public async Task<IActionResult> SearchByProductNames(string productName)
+        {
+            var SearchByProductName = await _productservice.Where(x => x.Name.ToLower().Contains(productName.ToLower()));
+            return Ok(_mapper.Map<IEnumerable<ProductDto>>(SearchByProductName));
+        }
         [HttpPost]
         public async Task<IActionResult> Save(ProductDto productDto)
         {

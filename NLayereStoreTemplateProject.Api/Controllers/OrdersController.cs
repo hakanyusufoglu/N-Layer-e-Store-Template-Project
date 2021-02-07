@@ -48,6 +48,12 @@ namespace NLayereStoreTemplateProject.Api.Controllers
             var orders = await _orderService.GetAllWithProductAndUser();
             return Ok(_mapper.Map<IEnumerable<OrderWithProductsAndUserDto>>(orders));
         }
+        [HttpPost("search/{date}")]
+        public async Task<IActionResult> SearchByOrderDates(DateTime date)
+        {
+            var searchByOrderDate = await _orderService.Where(x => x.dateTime==date);
+            return Ok(_mapper.Map<IEnumerable<OrderDto>>(searchByOrderDate));
+        }
         [HttpPost]
         public async Task<IActionResult> Save(OrderDto orderDto)
         {
