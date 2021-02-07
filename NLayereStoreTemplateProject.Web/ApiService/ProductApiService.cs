@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace NLayereStoreTemplateProject.Web.ApiService
@@ -61,6 +62,20 @@ namespace NLayereStoreTemplateProject.Web.ApiService
             if (response.IsSuccessStatusCode)
             {
                 return JsonConvert.DeserializeObject<IEnumerable<ProductWithCategoryAndBrandDto>>(await response.Content.ReadAsStringAsync());
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public async Task<IEnumerable<ProductDto>> SearchByName(string name) //not yet used
+        {
+            var stringContent = new StringContent(JsonConvert.SerializeObject(name), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync($"products/search/{name}", stringContent);
+            if (response.IsSuccessStatusCode)
+            {
+                var products = JsonConvert.DeserializeObject<IEnumerable<ProductDto>>(await response.Content.ReadAsStringAsync());
+                return products;
             }
             else
             {

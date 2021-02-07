@@ -81,13 +81,15 @@
 
 
     <div class="row">
-        <div class="input-group ">
-            <input id="search" type="search" class="form-control" placeholder="Search..." />
-            <label class="form-label"></label>
-            <button type="button" class="btn btn-primary">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
+        <form method="post" asp-action="Search">
+            <div class="input-group ">
+                <input name="searchName" type="search" class="form-control" placeholder="Search..." />
+                <label class="form-label"></label>
+                <button asp-r type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </form>
         <table class="table table-bordered order-list mt-4">
             <thead>
                 <tr>

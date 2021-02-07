@@ -20,5 +20,20 @@ namespace NLayereStoreTemplateProject.Web.Controllers
             var orders =await _orderApiService.GetAllOrderWithProductUserAsync();
             return View(orders);
         }
+        [HttpPost]
+        public async Task<IActionResult> Search(DateTime searchDate)
+        {
+            var searchOrder = await _orderApiService.GetAllOrderWithProductUserAsync();
+            searchOrder = searchOrder.Where(x => x.dateTime==searchDate);
+            if (searchOrder != null)
+            {
+                return View("Index", searchOrder);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+
+        }
     }
 }

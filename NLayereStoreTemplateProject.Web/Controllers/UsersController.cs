@@ -33,7 +33,20 @@ namespace NLayereStoreTemplateProject.Web.Controllers
             return RedirectToAction("Index");
         }
      
-
+        [HttpPost]
+        public async Task<IActionResult> Search(string searchName)
+        {
+            var searchUser = await _userApiService.SearchByName(searchName);
+            if (searchUser != null)
+            {
+                return View("Index", searchUser);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+           
+        }
         public async Task<IActionResult> Update(int id)
         {
             var user =await _userApiService.GetByIdAsync(id);
