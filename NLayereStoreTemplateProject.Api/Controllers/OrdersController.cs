@@ -35,7 +35,12 @@ namespace NLayereStoreTemplateProject.Api.Controllers
             var order = await _orderService.GetByIdAsync(id);
             return Ok(_mapper.Map<OrderDto>(order));
         }
-
+        [HttpGet("count")]
+        public async Task<IActionResult> GetCount()
+        {
+            int count = await _orderService.CountAsync();
+            return Ok(count);
+        }
         [HttpGet("{id}/products/user")]
         public async Task<IActionResult> GetWithProductandUserById(int id)
         {

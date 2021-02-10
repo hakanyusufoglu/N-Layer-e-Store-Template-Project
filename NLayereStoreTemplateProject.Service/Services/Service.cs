@@ -33,6 +33,11 @@ namespace NLayereStoreTemplateProject.Service.Services
             
         }
 
+        public async Task<int> CountAsync()
+        {
+            return await _repository.CountAsync();
+        }
+
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
            return await _repository.GetAllAsync();

@@ -46,6 +46,12 @@ namespace NLayereStoreTemplateProject.Api.Controllers
             var product = await _productservice.GetAllWithCategoryAsync();
             return Ok(_mapper.Map<IEnumerable<ProductWithCategoryAndBrandDto>>(product));
         }
+        [HttpGet("count")]
+        public async Task<IActionResult> GetCount()
+        {
+            int count = await _productservice.CountAsync();
+            return Ok(count);
+        }
         [HttpPost("search/{productName}")]
         public async Task<IActionResult> SearchByProductNames(string productName)
         {

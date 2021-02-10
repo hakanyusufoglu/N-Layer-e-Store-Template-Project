@@ -30,6 +30,11 @@ namespace NLayereStoreTemplateProject.Data.Repositories
             await _dbSet.AddRangeAsync(entities);
         }
 
+        public async Task<int> CountAsync()
+        {
+           return await _dbSet.CountAsync();
+        }
+
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return await _dbSet.ToListAsync();
