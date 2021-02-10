@@ -13,6 +13,9 @@ namespace NLayereStoreTemplateProject.Api.DTOs
         public string ImageFile { get; set; }
         public decimal Price { get; set; }
         public int? UnitStock { get; set; }
+        public int CategoryId { get; set; }
+        public int BrandId { get; set; }
+        public bool IsDeleted { get; set; }
 
     }
 }
