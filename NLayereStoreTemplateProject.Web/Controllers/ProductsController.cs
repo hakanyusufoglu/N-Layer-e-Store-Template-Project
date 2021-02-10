@@ -38,5 +38,11 @@ namespace NLayereStoreTemplateProject.Web.Controllers
             }
 
         }
+
+        public async Task<IActionResult> Update(int id)
+        {
+            var product = await _productApiService.GetByIdAsync(id);
+            return PartialView("~/Views/Shared/PartialViews/ProductsPartialViews/_ProductUpdatePartialViews.cshtml", product);
+        }
     }
 }

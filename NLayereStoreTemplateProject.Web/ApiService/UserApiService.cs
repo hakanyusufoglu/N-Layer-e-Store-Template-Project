@@ -83,13 +83,13 @@ namespace NLayereStoreTemplateProject.Web.ApiService
                 return null;
             }
         }
-        public async Task<IEnumerable<ProductWithCategoryAndBrandDto>> SearchByName(string name)
+        public async Task<IEnumerable<UserDto>> SearchByName(string name)
         {
             var stringContent = new StringContent(JsonConvert.SerializeObject(name), Encoding.UTF8, "application/json");
             var response = await _httpClient.PostAsync($"users/search/{name}", stringContent);
             if (response.IsSuccessStatusCode)
             {
-              var  userDto = JsonConvert.DeserializeObject<IEnumerable<ProductWithCategoryAndBrandDto>>(await response.Content.ReadAsStringAsync());
+              var  userDto = JsonConvert.DeserializeObject<IEnumerable<UserDto>>(await response.Content.ReadAsStringAsync());
                 return userDto;
             }
             else

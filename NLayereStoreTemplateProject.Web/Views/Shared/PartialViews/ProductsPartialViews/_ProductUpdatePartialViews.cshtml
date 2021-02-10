@@ -1,0 +1,34 @@
+﻿@model ProductWithCategoryAndBrandDto
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+<form method="post" action="/Users/Update">
+
+    <div class="row">
+        <div class="col-6">
+            <strong> Name</strong>
+            <input type="text" asp-for="Name" name="Name" class="form-control" />
+        </div>
+        <div class="col-6">
+            <strong> Last Name</strong>
+            <input type="text" asp-for="Price" name="Price" class="form-control" />
+        </div>
+    </div>
+    <br />
+    <strong>Phone</strong>
+    <input type="text" name="UnitStock" asp-for="UnitStock" class="form-control" />
+
+    <strong>Adress</strong>
+    <input type="text" name="Category.CategoryName" asp-for="Category.CategoryName" class="form-control" />
+    <br />
+    <strong>Username</strong>
+    <input type="text" name="Brand.Name" asp-for="Brand.Name" class="form-control" />
+    <br />
+    <input type="hidden" name="ProductId" asp-for="ProductId" />
+    <button type="submit" class="btn btn-primary mb-2" style="float:right">Update Product</button>
+
+
+</form>
+
