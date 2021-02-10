@@ -43,6 +43,31 @@ namespace NLayereStoreTemplateProject.Web.ApiService
                      return null;
             }
         }
+        public async Task<bool> Update(ProductDto productDto)
+        {
+            var stringContent = new StringContent(JsonConvert.SerializeObject(productDto), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PutAsync("products", stringContent);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public async Task<bool> Remove(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"products/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public async Task<ProductWithCategoryDto> GetProductWithCategoryAsync(int id)
         {
      

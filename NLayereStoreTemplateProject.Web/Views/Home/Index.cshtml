@@ -3,7 +3,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<!--Home page-->
 
 
 <div class="container">
@@ -15,7 +15,7 @@
             @using (Html.BeginForm("ProductByCategory","Home"))
             { 
                 
-        <select class="custom-select" onchange="this.form.submit();" id="selectedCategoryId" name="selectedCategoryId" asp-items="ViewBag.Categories">
+        <select class="custom-select"  id="selectedCategoryId" name="selectedCategoryId" asp-items="ViewBag.Categories">
             <option value="All Product" id="0">All Products</option>
         </select>
                 
