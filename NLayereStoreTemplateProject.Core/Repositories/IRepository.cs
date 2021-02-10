@@ -15,6 +15,7 @@ namespace NLayereStoreTemplateProject.Core.Repositories
         Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
         Task AddAsync(TEntity entity);
         Task AddRangeAsync(IEnumerable<TEntity> entities);
+        Task<int> CountAsync();
         TEntity Update(TEntity entity);
         void Remove(TEntity entity);
         void RemoveRange(IEnumerable<TEntity> entities);

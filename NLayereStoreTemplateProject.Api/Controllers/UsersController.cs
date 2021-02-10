@@ -35,6 +35,12 @@ namespace NLayereStoreTemplateProject.Api.Controllers
             var user = await _service.GetByIdAsync(id);
             return Ok(_mapper.Map<UserDto>(user));
         }
+        [HttpGet("count")]
+        public async Task<IActionResult> GetCount()
+        {
+            int count = await _service.CountAsync();
+            return Ok(count);
+        }
         [HttpPost("search/{userName}")]
         public async Task<IActionResult> SearchByUserNames(string userName)
         {
