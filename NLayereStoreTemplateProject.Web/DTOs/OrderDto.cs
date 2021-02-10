@@ -14,6 +14,9 @@ namespace NLayereStoreTemplateProject.Web.DTOs
         public int OrderCount { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal TotalPrice { get; set; }
+        public int ProductId { get; set; }
+        public int UserId { get; set; }
+        public bool IsDeleted { get; set; }
     }
     public enum PaymentType
     {
