@@ -27,5 +27,15 @@ namespace NLayereStoreTemplateProject.Web.ApiService
                 return null;
             }
         }
+        public async Task<int> GetCount()
+        {
+            var response = await _httpClient.GetAsync("orders/count");
+            if (response.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<int>(await response.Content.ReadAsStringAsync());
+
+            }
+            return -1;
+        }
     }
 }

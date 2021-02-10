@@ -1,4 +1,4 @@
-﻿
+﻿@model DashBoardViewModel
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -15,7 +15,7 @@
                 <div class="card-body border-0 text-white">
                     <div class="row">
                         <div class="col-6">
-                            <h3> <strong>150</strong> </h3>
+                            <h3> <strong>@Model.OrderCount</strong> </h3>
                             <h6 class="card-title border-0 text-white">New Order</h6>
                         </div>
                         <div class="col-6">
@@ -40,7 +40,7 @@
                 <div class="card-body border-0 text-white">
                     <div class="row">
                         <div class="col-6">
-                            <h3> <strong> 75 </strong> </h3>
+                            <h3> <strong> @Model.UserCount </strong> </h3>
                             <h6 class="card-title border-0 text-white">New Employee</h6>
                         </div>
                         <div class="col-6">
@@ -61,7 +61,7 @@
                 <div class="card-body border-0 text-white">
                     <div class="row">
                         <div class="col-6">
-                            <h3> <strong> 1997 </strong> </h3>
+                            <h3> <strong> @Model.ProductCount </strong> </h3>
                             <h6 class="card-title border-0 text-white">Total Product</h6>
                         </div>
                         <div class="col-6">

@@ -32,6 +32,17 @@ namespace NLayereStoreTemplateProject.Web.ApiService
             }
             return userDtos;
         }
+
+        public async Task<int> GetCount()
+        {
+            var response = await _httpClient.GetAsync("users/count");
+            if (response.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<int>(await response.Content.ReadAsStringAsync());
+
+            }
+            return -1;
+        }
         public async Task<UserDto> AddAsync(UserDto userDto)
         {
             var stringContent = new StringContent(JsonConvert.SerializeObject(userDto), Encoding.UTF8, "application/json");

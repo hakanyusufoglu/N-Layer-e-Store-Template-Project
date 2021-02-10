@@ -43,6 +43,16 @@ namespace NLayereStoreTemplateProject.Web.ApiService
                      return null;
             }
         }
+        public async Task<int> GetCount()
+        {
+            var response = await _httpClient.GetAsync("products/count");
+            if (response.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<int>(await response.Content.ReadAsStringAsync());
+
+            }
+            return -1;
+        }
         public async Task<bool> Update(ProductDto productDto)
         {
             var stringContent = new StringContent(JsonConvert.SerializeObject(productDto), Encoding.UTF8, "application/json");
