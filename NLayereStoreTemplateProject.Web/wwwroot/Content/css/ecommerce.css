@@ -1,0 +1,60 @@
+body{
+    font-family:  "Inter", Arial, "Helvetica Neue", "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+
+.nav-link{
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.7)  !important;
+}
+.nav-link-black{
+    font-size: 15px;
+    color: #1c1c1c  !important;
+    padding-right: 0.7rem;  padding-left: 0.7rem;
+    font-weight: 500  !important;
+    
+}
+.footer-text{
+    font-size: 15px;
+    color:#969696 !important;
+}
+.footer-link{
+    font-size: 15px;
+    color: #1c1c1c  !important;
+    font-weight: 500  !important;
+    
+}
+.price {
+    font-weight: 600;
+    color: #212529;
+}
+a.nav-link-black:hover{
+    text-decoration: none;
+    color: #807a7a  !important;
+}
+.logo {
+    margin-right: 7px;
+    max-height: 42px;
+    display: inline-block;
+}
+
+.icon-sm {
+    width: 48px;
+    height: 48px;
+    line-height: 48px !important;
+    font-size: 20px;
+    color: gray;
+}
+
+.icon-xs, .icon-sm, .icon-md, .icon-lg {
+    display: inline-block;
+    text-align: center;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+.rounded-circle {
+    border-radius: 50% !important;
+}
+.border {
+    border: 1px solid #e4e4e4 !important;
+}

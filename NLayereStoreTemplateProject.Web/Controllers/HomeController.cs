@@ -34,7 +34,8 @@ namespace NLayereStoreTemplateProject.Web.Controllers
             ViewBag.Categories =new SelectList(categories,"CategoryId","CategoryName");
             return View(products);
         }
-  
+
+
         [HttpGet]
         public async Task<IActionResult> ProductDetails(int id)
         {
@@ -60,6 +61,16 @@ namespace NLayereStoreTemplateProject.Web.Controllers
             var categories = await _categoryApiService.GetAllAsync();
             ViewBag.Categories = new SelectList(categories, "CategoryId", "CategoryName", selectedCategoryId);
             return View(category);
+        }
+        //OLD VERSION VIEW
+        [HttpGet]
+        public async Task<IActionResult> OldIndex()
+        {
+            var products = await _productApiService.GetAllAsync();
+
+            var categories = await _categoryApiService.GetAllAsync();
+            ViewBag.Categories = new SelectList(categories, "CategoryId", "CategoryName");
+            return View(products);
         }
 
     }
