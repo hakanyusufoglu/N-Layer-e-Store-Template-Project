@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NLayereStoreTemplateProject.Core.Entities
 {
-   public class User
+   public class User:Base
     {
         public User()
         {
@@ -17,7 +17,7 @@ namespace NLayereStoreTemplateProject.Core.Entities
         public string LastName { get; set; }
         public string Adress { get; set; }
         public string Phone { get; set; }
-        public bool IsDeleted{ get; set; }
         public ICollection<Order> Orders { get; set; }
+        public ICollection<Basket> Basket { get; set; }
     }
 }
