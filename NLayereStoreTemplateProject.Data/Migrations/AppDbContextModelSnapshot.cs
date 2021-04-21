@@ -32,13 +32,13 @@ namespace NLayereStoreTemplateProject.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("ProductId")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("BasketId");
@@ -47,7 +47,7 @@ namespace NLayereStoreTemplateProject.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Basket");
+                    b.ToTable("Baskets");
                 });
 
             modelBuilder.Entity("NLayereStoreTemplateProject.Core.Entities.Brand", b =>
@@ -244,11 +244,15 @@ namespace NLayereStoreTemplateProject.Data.Migrations
                 {
                     b.HasOne("NLayereStoreTemplateProject.Core.Entities.Product", "Product")
                         .WithMany("Baskets")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("NLayereStoreTemplateProject.Core.Entities.User", "User")
                         .WithMany("Basket")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Product");
 

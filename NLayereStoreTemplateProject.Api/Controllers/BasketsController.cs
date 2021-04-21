@@ -15,23 +15,29 @@ namespace NLayereStoreTemplateProject.Api.Controllers
     [ApiController]
     public class BasketsController : ControllerBase
     {
-        private readonly IService<Basket> _service;
+        private readonly IBasketService _basketService;
         private readonly IMapper _mapper;
-        public BasketsController(IService<Basket> service, IMapper mapper)
+        public BasketsController(IBasketService basketSservice, IMapper mapper)
         {
-            _service = service;
+            _basketService = basketSservice;
             _mapper = mapper;
         }
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var baskets = await _service.GetAllAsync();
-            return Ok(_mapper.Map<IEnumerable<BasketsDto>>(baskets));
+            var baskets = await _basketService.GetAllWithProductAndUserBasket();
+            return Ok(_mapper.Map<IEnumerable<BasketandProductsUserDto>>(baskets));
+        }
+        [HttpGet("{id}/products/user")]
+        public async Task<IActionResult>GetAllBasketByUserId(int id)
+        {
+            var basketsByUserId = (await _basketService.GetAllWithProductAndUserBasket()).Where(x => x.UserId == id).ToList();
+            return Ok(_mapper.Map<IEnumerable<BasketandProductsUserDto>>(basketsByUserId));
         }
         [HttpPost]
         public async Task<IActionResult> Save(BasketsDto basketDto)
         {
-            var newBasket = await _service.AddAsync(_mapper.Map<Basket>(basketDto));
+            var newBasket = await _basketService.AddAsync(_mapper.Map<Basket>(basketDto));
             return Created(string.Empty, _mapper.Map<BasketsDto>(newBasket));
         }
     }

@@ -3,12 +3,20 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NLayereStoreTemplateProject.Data.Migrations
 {
-    public partial class userbrandproductreletionship_and_baseclass : Migration
+    public partial class userbrandproductrelationship_and_baseclass : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "BasketProduct");
+
+            migrationBuilder.DropPrimaryKey(
+                name: "PK_Basket",
+                table: "Basket");
+
+            migrationBuilder.RenameTable(
+                name: "Basket",
+                newName: "Baskets");
 
             migrationBuilder.AddColumn<DateTime>(
                 name: "CreateDate",
@@ -47,74 +55,85 @@ namespace NLayereStoreTemplateProject.Data.Migrations
 
             migrationBuilder.AddColumn<DateTime>(
                 name: "CreateDate",
-                table: "Basket",
+                table: "Baskets",
                 type: "datetime2",
                 nullable: false,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
             migrationBuilder.AddColumn<int>(
                 name: "ProductId",
-                table: "Basket",
+                table: "Baskets",
                 type: "int",
-                nullable: true);
+                nullable: false,
+                defaultValue: 0);
 
             migrationBuilder.AddColumn<int>(
                 name: "Quantity",
-                table: "Basket",
+                table: "Baskets",
                 type: "int",
                 nullable: false,
                 defaultValue: 0);
 
             migrationBuilder.AddColumn<int>(
                 name: "UserId",
-                table: "Basket",
+                table: "Baskets",
                 type: "int",
-                nullable: true);
+                nullable: false,
+                defaultValue: 0);
+
+            migrationBuilder.AddPrimaryKey(
+                name: "PK_Baskets",
+                table: "Baskets",
+                column: "BasketId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Basket_ProductId",
-                table: "Basket",
+                name: "IX_Baskets_ProductId",
+                table: "Baskets",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Basket_UserId",
-                table: "Basket",
+                name: "IX_Baskets_UserId",
+                table: "Baskets",
                 column: "UserId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Basket_Products_ProductId",
-                table: "Basket",
+                name: "FK_Baskets_Products_ProductId",
+                table: "Baskets",
                 column: "ProductId",
                 principalTable: "Products",
                 principalColumn: "ProductId",
-                onDelete: ReferentialAction.Restrict);
+                onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Basket_Users_UserId",
-                table: "Basket",
+                name: "FK_Baskets_Users_UserId",
+                table: "Baskets",
                 column: "UserId",
                 principalTable: "Users",
                 principalColumn: "UserId",
-                onDelete: ReferentialAction.Restrict);
+                onDelete: ReferentialAction.Cascade);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Basket_Products_ProductId",
-                table: "Basket");
+                name: "FK_Baskets_Products_ProductId",
+                table: "Baskets");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Basket_Users_UserId",
-                table: "Basket");
+                name: "FK_Baskets_Users_UserId",
+                table: "Baskets");
+
+            migrationBuilder.DropPrimaryKey(
+                name: "PK_Baskets",
+                table: "Baskets");
 
             migrationBuilder.DropIndex(
-                name: "IX_Basket_ProductId",
-                table: "Basket");
+                name: "IX_Baskets_ProductId",
+                table: "Baskets");
 
             migrationBuilder.DropIndex(
-                name: "IX_Basket_UserId",
-                table: "Basket");
+                name: "IX_Baskets_UserId",
+                table: "Baskets");
 
             migrationBuilder.DropColumn(
                 name: "CreateDate",
@@ -138,19 +157,28 @@ namespace NLayereStoreTemplateProject.Data.Migrations
 
             migrationBuilder.DropColumn(
                 name: "CreateDate",
-                table: "Basket");
+                table: "Baskets");
 
             migrationBuilder.DropColumn(
                 name: "ProductId",
-                table: "Basket");
+                table: "Baskets");
 
             migrationBuilder.DropColumn(
                 name: "Quantity",
-                table: "Basket");
+                table: "Baskets");
 
             migrationBuilder.DropColumn(
                 name: "UserId",
-                table: "Basket");
+                table: "Baskets");
+
+            migrationBuilder.RenameTable(
+                name: "Baskets",
+                newName: "Basket");
+
+            migrationBuilder.AddPrimaryKey(
+                name: "PK_Basket",
+                table: "Basket",
+                column: "BasketId");
 
             migrationBuilder.CreateTable(
                 name: "BasketProduct",

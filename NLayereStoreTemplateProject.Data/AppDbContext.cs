@@ -20,6 +20,7 @@ namespace NLayereStoreTemplateProject.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Basket> Baskets{ get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Veritabanı tabloları oluşmadan önce OnModelCreating() adlı metot çalışmaktadır.

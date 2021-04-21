@@ -16,6 +16,7 @@ namespace NLayereStoreTemplateProject.Data.UnitOfWorks
         private OrderRepository _orderRepository;
         private ProductRepository _productRepository;
         private CategoryRepository _categoryRepository;
+        private BasketRepository _basketRepository;
         public UnitOfWork(AppDbContext appDbContext)
         {
             _context = appDbContext;
@@ -24,7 +25,7 @@ namespace NLayereStoreTemplateProject.Data.UnitOfWorks
 
         public IProductRepository Product => _productRepository = _productRepository ?? new ProductRepository(_context);
         public ICategoryRepository Category => _categoryRepository = _categoryRepository ?? new CategoryRepository(_context);
-
+        public IBasketRepository Basket => _basketRepository = _basketRepository ?? new BasketRepository(_context);
         public void Commit()
         {
             _context.SaveChanges();

@@ -10,8 +10,8 @@ using NLayereStoreTemplateProject.Data;
 namespace NLayereStoreTemplateProject.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210420141554_user-brand-product-reletionship_and_baseclass")]
-    partial class userbrandproductreletionship_and_baseclass
+    [Migration("20210420202200_user-brand-product-relationship_and_baseclass")]
+    partial class userbrandproductrelationship_and_baseclass
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,13 +34,13 @@ namespace NLayereStoreTemplateProject.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("ProductId")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("BasketId");
@@ -49,7 +49,7 @@ namespace NLayereStoreTemplateProject.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Basket");
+                    b.ToTable("Baskets");
                 });
 
             modelBuilder.Entity("NLayereStoreTemplateProject.Core.Entities.Brand", b =>
@@ -246,11 +246,15 @@ namespace NLayereStoreTemplateProject.Data.Migrations
                 {
                     b.HasOne("NLayereStoreTemplateProject.Core.Entities.Product", "Product")
                         .WithMany("Baskets")
-                        .HasForeignKey("ProductId");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("NLayereStoreTemplateProject.Core.Entities.User", "User")
                         .WithMany("Basket")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Product");
 
