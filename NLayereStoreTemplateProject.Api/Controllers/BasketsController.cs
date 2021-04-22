@@ -40,5 +40,20 @@ namespace NLayereStoreTemplateProject.Api.Controllers
             var newBasket = await _basketService.AddAsync(_mapper.Map<Basket>(basketDto));
             return Created(string.Empty, _mapper.Map<BasketsDto>(newBasket));
         }
+        //quantity property value change 
+        [HttpPut]
+        public IActionResult Update(BasketsDto basket)
+        {
+            _basketService.Update(_mapper.Map<Basket>(basket));
+            return NoContent();
+        }
+        //example: productId 1 and userId 2 delete
+        [HttpDelete("{productId}/userId/{userId}")]
+        public IActionResult RemoveRange(int productId,int userId)
+        {
+            var entities = _basketService.Where(x => x.ProductId == productId).Result.Where(x=>x.UserId==userId);
+            _basketService.RemoveRange(entities);
+            return NoContent();
+        }
     }
 }
