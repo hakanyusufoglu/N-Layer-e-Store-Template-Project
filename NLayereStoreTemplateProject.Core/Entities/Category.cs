@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NLayereStoreTemplateProject.Core.Entities
 {
-   public class Category
+   public class Category:Base
     {
         public Category()
         {
@@ -14,7 +14,6 @@ namespace NLayereStoreTemplateProject.Core.Entities
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public string CategoryDescription { get; set; }
-        public bool IsDeleted { get; set; }
         public ICollection<Product> Products{ get; set; }
     }
 }

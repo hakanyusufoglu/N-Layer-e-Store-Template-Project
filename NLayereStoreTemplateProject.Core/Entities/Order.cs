@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NLayereStoreTemplateProject.Core.Entities
 {
-   public class Order
+   public class Order:Base
     {
         public int OrderId { get; set; }
         public PaymentType PaymentType { get; set; }
@@ -13,7 +13,6 @@ namespace NLayereStoreTemplateProject.Core.Entities
         public int OrderCount { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal TotalPrice { get; set; }
-        public bool IsDeleted { get; set; }
         public int ProductId { get; set; }
         public int UserId { get; set; }
         public virtual Product Product { get; set; }

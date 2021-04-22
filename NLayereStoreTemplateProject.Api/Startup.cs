@@ -51,6 +51,7 @@ namespace NLayereStoreTemplateProject.Api
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IBasketService, BasketService>();
             services.AddControllers();
 
 

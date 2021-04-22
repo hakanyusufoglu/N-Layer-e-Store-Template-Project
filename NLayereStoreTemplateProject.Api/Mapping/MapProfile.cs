@@ -31,6 +31,9 @@ namespace NLayereStoreTemplateProject.Api.Mapping
             CreateMap<Product, ProductDto>();
             CreateMap<ProductDto, Product>();
 
+            CreateMap<Basket, BasketsDto>();
+            CreateMap<BasketsDto, Basket>();
+
             CreateMap<Product, ProductWithCategoryDto>();
             CreateMap<ProductWithCategoryDto, Product>();
 
@@ -39,6 +42,9 @@ namespace NLayereStoreTemplateProject.Api.Mapping
 
             CreateMap<Category, CategoryWithProductsDto>();
             CreateMap<CategoryWithProductsDto, Category>();
+
+            CreateMap<Basket, BasketandProductsUserDto>();
+            CreateMap<BasketandProductsUserDto, Basket>();
 
        
         }
