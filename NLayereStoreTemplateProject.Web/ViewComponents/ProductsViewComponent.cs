@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace NLayereStoreTemplateProject.Web.ViewComponents
-{ //Henüz kullanılmıyor dikkate almayınız.
+{ //Henüz kullanılmıyor dikkate almayınız (Not using).
     public class ProductsViewComponent:ViewComponent
     {
         private readonly ProductApiService _productApiService;

@@ -16,12 +16,14 @@ namespace NLayereStoreTemplateProject.Web.Controllers
     {
         private readonly ProductApiService _productApiService;
         private readonly CategoryApiService _categoryApiService;
+        private readonly BasketApiService _basketsApiService;
         private readonly IMapper _mapper;
-        public HomeController(ProductApiService productApiService,CategoryApiService categoryApiService,IMapper mapper)
+        public HomeController(ProductApiService productApiService,CategoryApiService categoryApiService,BasketApiService basketsApiService,IMapper mapper)
         {
             
             _productApiService = productApiService;
             _categoryApiService = categoryApiService;
+            _basketsApiService = basketsApiService;
             _mapper = mapper;
         }
   
@@ -29,9 +31,11 @@ namespace NLayereStoreTemplateProject.Web.Controllers
         public async Task<IActionResult> Index()
         {
             var products = await _productApiService.GetAllAsync();
-            
             var categories = await _categoryApiService.GetAllAsync();
+            var baskets = await _basketsApiService.GetAllAsyncByUserId(1); //(login later edit)
+
             ViewBag.Categories =new SelectList(categories,"CategoryId","CategoryName");
+            ViewBag.Baskets = baskets.Count();
             return View(products);
         }
 
@@ -61,6 +65,18 @@ namespace NLayereStoreTemplateProject.Web.Controllers
             var categories = await _categoryApiService.GetAllAsync();
             ViewBag.Categories = new SelectList(categories, "CategoryId", "CategoryName", selectedCategoryId);
             return View(category);
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddToBasket(int productId)
+        {
+            var basket = new BasketDto
+            {
+                ProductId = productId,
+                Quantity = 1,
+                UserId = 1
+            };
+            await _basketsApiService.AddAsync(basket);
+            return RedirectToAction("Index");
         }
         //OLD VERSION VIEW
         [HttpGet]

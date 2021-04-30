@@ -1,0 +1,87 @@
+﻿@model IEnumerable<BasketandProductsUserDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{ decimal total = 0;}
+
+<div class="container">
+    <h3 class="mt-4 mb-4" >My Basket</h3>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card">
+                <table class="table table-borderless">
+                    <thead class="text-muted">
+                        <tr class="small text-uppercase">
+                            <th scope="col">Product</th>
+                            <th scope="col" width="120">Quantity</th>
+                            <th scope="col" width="120">Price</th>
+                            <th scope="col" class="text-right" width="200"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @item.Product.Name
+                            </td>
+                            <td>
+                                <select class="form-control" value="@item.Quantity">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+
+                                </select>
+
+                            </td>
+
+                            <td>
+                                @item.Product.Price
+                            </td>
+                            <td>
+                                <a class="btn btn-primary" asp-action="Remove" asp-route-id="@item.BasketId" title="Remove">Remove</a>
+
+                            </td>
+                            @{
+                                var quantityandPrice = item.Quantity * @item.Product.Price;
+                                total = total + quantityandPrice;
+                            }
+
+
+                        </tr>
+
+                        }
+                    <tr>
+                        <td>
+                            Total:
+                        </td>
+                        <td>
+                            @total
+                        </td>
+                     
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

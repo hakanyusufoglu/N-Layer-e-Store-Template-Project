@@ -55,5 +55,12 @@ namespace NLayereStoreTemplateProject.Api.Controllers
             _basketService.RemoveRange(entities);
             return NoContent();
         }
+        [HttpDelete("{id}")]
+        public  IActionResult Remove(int id)
+        {
+            var entity =  _basketService.Where(x => x.BasketId == id).Result.FirstOrDefault();
+            _basketService.Remove(entity);
+            return NoContent();
+        }
     }
 }
