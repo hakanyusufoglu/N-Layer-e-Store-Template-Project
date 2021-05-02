@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLayereStoreTemplateProject
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLayereStoreTemplateProject.Service", "NLayereStoreTemplateProject.Service\NLayereStoreTemplateProject.Service.csproj", "{976E24E2-F0F0-4D34-814A-4E7FF1B9379D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLayereStoreTemplateProject.Web", "NLayereStoreTemplateProject.Web\NLayereStoreTemplateProject.Web.csproj", "{3139D566-7557-4811-98F8-5F6A01552B19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLayereStoreTemplateProject.Web", "NLayereStoreTemplateProject.Web\NLayereStoreTemplateProject.Web.csproj", "{3139D566-7557-4811-98F8-5F6A01552B19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

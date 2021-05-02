@@ -5,29 +5,50 @@
 }
 <!--Orders page-->
 <!--navbar-->
+
+
 <partial name="~/Views/Shared/PartialViews/AdminPartialViews/_AdminContentHeaderPartialView.cshtml" />
 <div class="container-fluid">
     <div class="row">
         <form method="post" asp-action="Search">
             <div class="input-group ">
-                <input name="searchDate" type="search" class="form-control" placeholder="Search..." />
+                <input name="searchDate" type="search" class="form-control" placeholder="Date Search..." />
                 <label class="form-label"></label>
                 <button asp-r type="submit" class="btn btn-primary">
                     <i class="fas fa-search"></i>
                 </button>
             </div>
         </form>
+        <!--Update user popup modal page-->
+        <div class="modal" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title">Update Order</h2>
+                    </div>
+                    <form method="post" action="/Orders/Update">
+                        <div class="modal-body" id="ModalBody">
+
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <table class="table table-bordered order-list mt-4">
             <thead>
                 <tr>
                     <th>Order Date  </th>
-                    <th>User Name</th>
-                    <th>Lastname</th>
+                    <th>Name</th>
+                    <th>Last name</th>
                     <th>Phone</th>
                     <th>Product Name</th>
                     <th>Unit Price</th>
                     <th>Unit Count</th>
                     <th>Total Price</th>
+                    <th>Status</th>
                     <th>Actions</th>
 
                 </tr>
@@ -44,14 +65,28 @@
                         <td>@item.UnitPrice</td>
                         <td>@item.OrderCount</td>
                         <td>@item.TotalPrice</td>
+                        <td>@item.Status</td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.OrderId" title="Edit"><i class="material-icons text-warning">&#xE254;</i></a>
-                            <a asp-action="Remove" asp-route-id="@item.OrderId" title="Delete"><i class="material-icons text-danger">&#xE872;</i></a>
+                            @*<a asp-action="Edit" asp-route-id="@item.OrderId" title="Edit"><i class="material-icons text-warning">&#xE254;</i></a>*@
+
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" onclick="FuncPartialUpdate(@item.OrderId)"><i class="material-icons text-warning">&#xE254;</i></a>
+
+
+
+                            <a asp-action="Remove" name="orderId" asp-route-id="@item.OrderId" title="Delete"><i class="material-icons text-danger">&#xE872;</i></a>
                         </td>
                     </tr>
                 }
 
             </tbody>
         </table>
+        <script type="text/javascript">
+                function FuncPartialUpdate(orderId) {
+
+                var url = '@Url.Action("Update", "Orders")';
+                    url += '/' + orderId;
+                $("#ModalBody").load(url);
+            }
+        </script>
     </div>
 </div>

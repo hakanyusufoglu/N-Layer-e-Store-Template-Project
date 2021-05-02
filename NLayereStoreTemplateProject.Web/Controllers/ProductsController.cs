@@ -33,6 +33,7 @@ namespace NLayereStoreTemplateProject.Web.Controllers
         public async Task<IActionResult> Search(string searchName)
         {
             var searchProduct = await _productApiService.GetAllProductwithCategoryAsync();
+            if(searchName!=null)
            searchProduct = searchProduct.Where(x => x.Name.ToLower().Contains(searchName.ToLower()));
             if (searchProduct != null)
             {

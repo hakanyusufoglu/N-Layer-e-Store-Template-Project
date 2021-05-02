@@ -60,12 +60,34 @@ namespace NLayereStoreTemplateProject.Web.Controllers
             }
             return RedirectToAction("Index", "Orders");
         }
+        public async Task<IActionResult> Update(int id)
+        {
+           TempData["orderId"] = id;
+            //Api can only be pulled according to id
+
+            var order = (await _orderApiService.GetAllOrderWithProductUserAsync()).Where(x => x.OrderId == id).FirstOrDefault();
+            return PartialView("~/Views/Shared/PartialViews/OrdersPartialViews/_OrdersEditPartialViews.cshtml", order);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Update(OrderStatus orderStatus)
+        {
+          var id = Convert.ToInt32(TempData["orderId"]);
+            var orderDto =await _orderApiService.GetAllById(id);
+            orderDto.Status = orderStatus;
+            await _orderApiService.Update(orderDto);
+            return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> Remove(int id)
+        {
+            await _orderApiService.Remove(id);
+            return RedirectToAction("Index", "Orders");
+        }
         [HttpPost]
         public async Task<IActionResult> Search(DateTime searchDate)
         {
             var searchOrder = await _orderApiService.GetAllOrderWithProductUserAsync();
-            searchOrder = searchOrder.Where(x => x.dateTime==searchDate);
-            if (searchOrder != null)
+            searchOrder = searchOrder.Where(x => x.dateTime.Date == searchDate.Date);
+            if (searchOrder.Count() !=0)
             {
                 return View("Index", searchOrder);
             }

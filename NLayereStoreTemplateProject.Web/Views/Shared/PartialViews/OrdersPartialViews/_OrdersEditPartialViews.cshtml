@@ -1,0 +1,39 @@
+﻿@model OrderWithProductsAndUserDto
+
+
+
+<form method="post" action="/Orders/Update">
+    <div class="row  justify-content-center">
+        <img src="@Url.Content(Model.Product.ImageFile)" width="120" height="120" />
+
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <strong> Name</strong>
+            <input disabled type="text" name="mame" asp-for="User.Name" class="form-control" />
+        </div>
+        <div class="col-6">
+            <strong> Last Name</strong>
+            <input disabled type="text" name="lastName" asp-for="User.LastName" class="form-control" />
+        </div>
+    </div>
+    <br />
+    <strong>Phone</strong>
+    <input disabled type="text" name="phone" asp-for="User.Phone" class="form-control" />
+
+    <strong>Product Name</strong>
+    <input disabled type="text" name="productName" asp-for="Product.Name" class="form-control" />
+    <br />
+    <strong>Payment Type</strong>
+    <input disabled type="text" name="paymentType" asp-for="PaymentType" class="form-control" />
+    <br />
+    <strong>Status</strong>
+
+   
+    <select class="form-control mb-3" name="orderStatus" asp-for="Status" asp-items="@Html.GetEnumSelectList<OrderStatus>()"></select>
+    <input type="hidden" name="orderId" asp-for="OrderId" />
+    <button type="submit" class="btn btn-primary mb-2" style="float:right">Update Order</button>
+
+    @*<input type="text" name="Status" asp-for="Status" class="form-control" />
+        <br />*@
+</form>

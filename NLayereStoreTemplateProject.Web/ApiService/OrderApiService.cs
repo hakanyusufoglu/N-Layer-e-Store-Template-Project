@@ -28,6 +28,18 @@ namespace NLayereStoreTemplateProject.Web.ApiService
                 return null;
             }
         }
+        public async Task<OrderDto> GetAllById(int orderId)
+        {
+            var response = await _httpClient.GetAsync($"orders/{orderId}");
+            if (response.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<OrderDto>(await response.Content.ReadAsStringAsync());
+            }
+            else
+            {
+                return null;
+            }
+        }
         public async Task<OrderDto> AddAsync(OrderDto orderDto)
         {
             var stringContent = new StringContent(JsonConvert.SerializeObject(orderDto), Encoding.UTF8, "application/json");
@@ -41,6 +53,19 @@ namespace NLayereStoreTemplateProject.Web.ApiService
                 return null;
             }
         }
+        public async Task<bool> Update(OrderDto orderDto)
+        {
+            var stringContent = new StringContent(JsonConvert.SerializeObject(orderDto), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PutAsync("orders", stringContent);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public async Task<IEnumerable<OrderDto>> AddRangeAsync(IEnumerable<OrderDto> orderDtos )
         {
             var stringContent = new StringContent(JsonConvert.SerializeObject(orderDtos), Encoding.UTF8, "application/json");
@@ -52,6 +77,18 @@ namespace NLayereStoreTemplateProject.Web.ApiService
             else
             {
                 return null;
+            }
+        }
+        public async Task<bool> Remove(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"orders/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
         public async Task<int> GetCount()
