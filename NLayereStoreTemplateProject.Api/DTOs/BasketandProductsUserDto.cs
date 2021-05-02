@@ -1,12 +1,11 @@
-﻿using NLayereStoreTemplateProject.Core.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace NLayereStoreTemplateProject.Api.DTOs
 {
-    public class BasketandProductsUserDto:Base
+    public class BasketandProductsUserDto
     {
         public int BasketId { get; set; }
         public int Quantity { get; set; }

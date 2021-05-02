@@ -16,7 +16,6 @@ namespace NLayereStoreTemplateProject.Core.Services
         Task<IEnumerable<TEntity>> AddRangeAsync(IEnumerable<TEntity> entities);
         Task<int> CountAsync();
         TEntity Update(TEntity entity);
-        IEnumerable<TEntity> UpdateRange(IEnumerable<TEntity> entities);
         void Remove(TEntity entity);
         void RemoveRange(IEnumerable<TEntity> entities);
     }

@@ -65,17 +65,10 @@ namespace NLayereStoreTemplateProject.Api.Controllers
            var newOrder= await _orderService.AddAsync(_mapper.Map<Order>(orderDto));
             return Created(string.Empty, _mapper.Map<OrderDto>(newOrder));
         }
-        [HttpPost("ordernow")]
-        public async Task<IActionResult> SaveRange(IEnumerable<OrderDto> orderDtos)
-        {
-            var newOrders = await _orderService.AddRangeAsync(_mapper.Map<IEnumerable<Order>>(orderDtos));
-            return Created(string.Empty, _mapper.Map<IEnumerable<OrderDto>>(newOrders));
-        }
         [HttpPut]
         public IActionResult Update(OrderDto orderDto)
         {
             var order = _orderService.Update(_mapper.Map<Order>(orderDto));
-            
             return NoContent();
         }
         [HttpDelete("{id}")]

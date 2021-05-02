@@ -67,12 +67,6 @@ namespace NLayereStoreTemplateProject.Data.Repositories
             
         }
 
-        public IEnumerable<TEntity> UpdateRange(IEnumerable<TEntity> entities)
-        {
-            _dbSet.UpdateRange(entities);
-            return entities;
-        }
-
         public async Task<IEnumerable<TEntity>> Where(Expression<Func<TEntity, bool>> predicate)
         {
             return await _dbSet.Where(predicate).ToListAsync();

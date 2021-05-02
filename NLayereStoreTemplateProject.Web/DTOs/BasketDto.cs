@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace NLayereStoreTemplateProject.Web.DTOs
 {
-    public class BasketDto:Base
+    public class BasketDto
     {
         public int BasketId { get; set; }
         public int Quantity { get; set; }

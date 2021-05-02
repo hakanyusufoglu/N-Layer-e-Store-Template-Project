@@ -32,7 +32,7 @@ namespace NLayereStoreTemplateProject.Web.Controllers
         {
             var products = await _productApiService.GetAllAsync();
             var categories = await _categoryApiService.GetAllAsync();
-            var baskets = (await _basketsApiService.GetAllAsyncByUserId(1)).Where(x=>x.IsDeleted==false).ToList(); //(login later edit)
+            var baskets = await _basketsApiService.GetAllAsyncByUserId(1); //(login later edit)
 
             ViewBag.Categories =new SelectList(categories,"CategoryId","CategoryName");
             ViewBag.Baskets = baskets.Count();

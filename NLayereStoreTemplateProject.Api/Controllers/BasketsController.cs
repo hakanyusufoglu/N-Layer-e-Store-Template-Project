@@ -42,16 +42,9 @@ namespace NLayereStoreTemplateProject.Api.Controllers
         }
         //quantity property value change 
         [HttpPut]
-        public IActionResult Update(BasketsDto basketDto)
+        public IActionResult Update(BasketsDto basket)
         {
-            _basketService.Update(_mapper.Map<Basket>(basketDto));
-            return NoContent();
-        }
-
-        [HttpPut("updateforbaskets")]
-        public IActionResult Update(IEnumerable<BasketsDto> basketDtos)
-        {
-            _basketService.UpdateRange(_mapper.Map<IEnumerable<Basket>>(basketDtos));
+            _basketService.Update(_mapper.Map<Basket>(basket));
             return NoContent();
         }
         //example: productId 1 and userId 2 delete
