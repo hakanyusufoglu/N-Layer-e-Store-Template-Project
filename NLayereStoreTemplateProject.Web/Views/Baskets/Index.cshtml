@@ -3,68 +3,118 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@{ decimal total = 0;}
+@{ decimal total = 0;
+
+    string name = "", lastName = "", adress = "", phone = "";
+    BasketandProductsUserDto basketandProductsUserDto = null;
+
+}
 
 <div class="container">
     <h3 class="mt-4 mb-4" >My Basket</h3>
     <div class="row">
-        <div class="col-md-9">
-            <div class="card">
-                <table class="table table-borderless">
-                    <thead class="text-muted">
-                        <tr class="small text-uppercase">
-                            <th scope="col">Product</th>
-                            <th scope="col" width="120">Quantity</th>
-                            <th scope="col" width="120">Price</th>
-                            <th scope="col" class="text-right" width="200"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                        <tr>
-                            <td>
-                                @item.Product.Name
-                            </td>
-                            <td>
-                                <select class="form-control" value="@item.Quantity">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
+        
+            <div class="col-md-9">
+                <div class="card">
+                    <table class="table table-borderless">
+                        <thead class="text-muted">
+                            <tr class="small text-uppercase">
+                                <th scope="col">Product</th>
+                                <th scope="col" width="120">Quantity</th>
+                                <th scope="col" width="120">Price</th>
+                                <th scope="col" class="text-right" width="200"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-md-4 ">
+                                                <div>
+                                                    <img src="@Url.Content(@item.Product.ImageFile)" width="120" height="120" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div>
+                                                    <strong> @item.Product.Name </strong>
+                                                    <p class="text-muted"> @item.Product.Description </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <!--for quantity update-->
+                                        <form asp-controller="Baskets" asp-action="Update" method="post">
+                                            <select name="productQuantity" class="form-control" value="@item.Quantity" onchange="submit()">
+                                                <option selected>@item.Quantity</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
 
-                                </select>
+                                            </select>
+                                            <input type="hidden" name="BasketId" asp-for="@item.BasketId" class="form-control" />
+                                            <input type="hidden" name="productId" asp-for="@item.Product.ProductId" class="form-control" />
+                                            <input type="hidden" name="Quantity" asp-for="@item.Quantity" class="form-control" />
+                                            <input type="hidden" name="userId" asp-for="@item.User.UserId" class="form-control" />
+                                        </form>
+                                    </td>
 
-                            </td>
+                                    <td>
+                                        @item.Product.Price
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-primary" asp-action="Remove" asp-route-id="@item.BasketId" title="Remove">Remove</a>
 
-                            <td>
-                                @item.Product.Price
-                            </td>
-                            <td>
-                                <a class="btn btn-primary" asp-action="Remove" asp-route-id="@item.BasketId" title="Remove">Remove</a>
-
-                            </td>
-                            @{
-                                var quantityandPrice = item.Quantity * @item.Product.Price;
-                                total = total + quantityandPrice;
-                            }
+                                    </td>
+                                    @{
+                                        var quantityandPrice = item.Quantity * @item.Product.Price;
+                                        total = total + quantityandPrice;
+                                    }
 
 
-                        </tr>
+                                </tr>
 
-                        }
-                    <tr>
-                        <td>
-                            Total:
-                        </td>
-                        <td>
-                            @total
-                        </td>
-                     
-                    </tr>
-                    </tbody>
-                </table>
+
+                                <tr>
+                                    <td>
+                                        Total:      @total
+                                        @{
+                                            name = item.User.Name;
+                                            lastName = item.User.LastName;
+                                            phone = item.User.Phone;
+                                            adress = item.User.Adress;
+                                        }
+                                    </td>
+
+
+                                </tr>
+
+                              
+                                        }
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
+            <div class="col-md-3">
+                <div class="row"></div>
+                <div class="card">
+                    <div class="ml-1 mb-4">
+                        <h5><strong>Contact Details</strong></h5>
+                        <div>
+                            <p>Name:@name</p>
+                            <p>Lastname: @lastName</p>
+                            <p>Phone: @phone</p>
+                            <p>Adress: @adress</p>
+                            <p>Total Price: @total</p>
+                            
+                                <a class="btn btn-primary" asp-controller="Orders" asp-action="Save" style="width:98%;" title="OrderNow">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
 </div>
 

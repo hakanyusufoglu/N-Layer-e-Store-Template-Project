@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace NLayereStoreTemplateProject.Web.ApiService
@@ -21,6 +22,32 @@ namespace NLayereStoreTemplateProject.Web.ApiService
             if (response.IsSuccessStatusCode)
             {
                 return JsonConvert.DeserializeObject<IEnumerable<OrderWithProductsAndUserDto>>(await response.Content.ReadAsStringAsync());
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public async Task<OrderDto> AddAsync(OrderDto orderDto)
+        {
+            var stringContent = new StringContent(JsonConvert.SerializeObject(orderDto), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync("orders",stringContent);
+            if (response.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<OrderDto>(await response.Content.ReadAsStringAsync());
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public async Task<IEnumerable<OrderDto>> AddRangeAsync(IEnumerable<OrderDto> orderDtos )
+        {
+            var stringContent = new StringContent(JsonConvert.SerializeObject(orderDtos), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync("orders/ordernow", stringContent);
+            if (response.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<IEnumerable<OrderDto>>(await response.Content.ReadAsStringAsync());
             }
             else
             {

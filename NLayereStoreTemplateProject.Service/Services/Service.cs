@@ -71,6 +71,12 @@ namespace NLayereStoreTemplateProject.Service.Services
             _unitOfWork.Commit();
             return entity;
         }
+        public IEnumerable<TEntity> UpdateRange(IEnumerable<TEntity> entities)
+        {
+            _repository.UpdateRange(entities);
+            _unitOfWork.Commit();
+            return entities;
+        }
 
         public async Task<IEnumerable<TEntity>> Where(Expression<Func<TEntity, bool>> predicate)
         {
