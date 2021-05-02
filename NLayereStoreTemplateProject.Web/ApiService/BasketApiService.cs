@@ -43,7 +43,7 @@ namespace NLayereStoreTemplateProject.Web.ApiService
             }
 
         }
-        public async Task<bool> Uptade(BasketDto basketDto)
+        public async Task<bool> Update(BasketDto basketDto)
         {
             var stringContent = new StringContent(JsonConvert.SerializeObject(basketDto), Encoding.UTF8, "application/json");
             var response = await _httpClient.PutAsync("baskets", stringContent);
@@ -54,6 +54,19 @@ namespace NLayereStoreTemplateProject.Web.ApiService
             else
             { 
                 return false; 
+            }
+        }
+        public async Task<bool> UpdateRange(IEnumerable<BasketDto> basketDtos)
+        {
+            var stringContent = new StringContent(JsonConvert.SerializeObject(basketDtos), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PutAsync("baskets/updateforbaskets", stringContent);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
         public async Task<bool> Remove(int id)
