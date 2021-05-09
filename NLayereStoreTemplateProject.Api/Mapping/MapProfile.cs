@@ -13,38 +13,38 @@ namespace NLayereStoreTemplateProject.Api.Mapping
     {
         public MapProfile()
         {
-            CreateMap<Category, CategoryDto>(); //eğer sen category görürsen bunu categoryDto'ya çevir...
-            CreateMap<CategoryDto,Category >();
+            CreateMap<Category, CategoryDto>().ReverseMap(); //eğer sen category görürsen bunu categoryDto'ya çevir...
+            //CreateMap<CategoryDto,Category >();
 
-            CreateMap<Brand, BrandDto>();
-            CreateMap<BrandDto,Brand>();
+            CreateMap<Brand, BrandDto>().ReverseMap();
+           // CreateMap<BrandDto,Brand>();
 
-            CreateMap<Order, OrderDto>();
-            CreateMap<OrderDto, Order>();
+            CreateMap<Order, OrderDto>().ReverseMap();
+        //    CreateMap<OrderDto, Order>();
 
-            CreateMap<Order, OrderWithProductsAndUserDto>();
-            CreateMap<OrderWithProductsAndUserDto, Order>();
+            CreateMap<Order, OrderWithProductsAndUserDto>().ReverseMap();
+           // CreateMap<OrderWithProductsAndUserDto, Order>();
 
-            CreateMap<User, UserDto>();
-            CreateMap<UserDto, User>();
+            CreateMap<User, UserDto>().ReverseMap();
+            // CreateMap<UserDto, User>();
 
-            CreateMap<Product, ProductDto>();
-            CreateMap<ProductDto, Product>();
+            CreateMap<Product, ProductDto>().ReverseMap();
+         //   CreateMap<ProductDto, Product>();
 
-            CreateMap<Basket, BasketsDto>();
-            CreateMap<BasketsDto, Basket>();
+            CreateMap<Basket, BasketsDto>().ReverseMap();
+           // CreateMap<BasketsDto, Basket>();
 
-            CreateMap<Product, ProductWithCategoryDto>();
-            CreateMap<ProductWithCategoryDto, Product>();
+            CreateMap<Product, ProductWithCategoryDto>().ReverseMap();
+            //CreateMap<ProductWithCategoryDto, Product>();
 
-            CreateMap<Product, ProductWithCategoryAndBrandDto>();
-            CreateMap<ProductWithCategoryAndBrandDto,Product>();
+            CreateMap<Product, ProductWithCategoryAndBrandDto>().ReverseMap();
+           // CreateMap<ProductWithCategoryAndBrandDto,Product>();
 
-            CreateMap<Category, CategoryWithProductsDto>();
-            CreateMap<CategoryWithProductsDto, Category>();
+            CreateMap<Category, CategoryWithProductsDto>().ReverseMap();
+          //  CreateMap<CategoryWithProductsDto, Category>();
 
-            CreateMap<Basket, BasketandProductsUserDto>();
-            CreateMap<BasketandProductsUserDto, Basket>();
+            CreateMap<Basket, BasketandProductsUserDto>().ReverseMap();
+           // CreateMap<BasketandProductsUserDto, Basket>();
 
        
         }

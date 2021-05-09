@@ -15,7 +15,7 @@ namespace NLayereStoreTemplateProject.Data.Configurations
             builder.Property(x => x.ProductId).UseIdentityColumn(1,1);
             builder.Property(x => x.ImageFile).HasMaxLength(int.MaxValue);
             builder.Property(x => x.Name).IsRequired().HasMaxLength(65);
-            builder.Property(x => x.Price).IsRequired().HasColumnType("decimal(18,4)"); ;
+            builder.Property(x => x.Price).IsRequired().HasColumnType("decimal(18,2)"); ;
         }
     }
 }
