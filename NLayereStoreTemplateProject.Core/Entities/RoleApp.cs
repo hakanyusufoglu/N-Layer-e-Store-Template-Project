@@ -7,5 +7,7 @@ namespace NLayereStoreTemplateProject.Core.Entities
 {
    public class RoleApp:IdentityRole
     {
+        public DateTime CreateDate { get; set; }
+        public bool IsDelete { get; set; }
     }
 }

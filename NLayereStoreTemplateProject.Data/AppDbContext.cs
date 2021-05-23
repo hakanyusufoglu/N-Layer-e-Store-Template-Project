@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using NLayereStoreTemplateProject.Core.Entities;
 using NLayereStoreTemplateProject.Data.Configurations;
 using System;
@@ -7,7 +9,7 @@ using System.Text;
 
 namespace NLayereStoreTemplateProject.Data
 {
-   public class AppDbContext:DbContext
+   public class AppDbContext:IdentityDbContext<UserApp,IdentityRole,string>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options):base(options)
         {
@@ -15,7 +17,7 @@ namespace NLayereStoreTemplateProject.Data
         }
 
         //bu işlemler sayesinde veritabanına yansıtılacak olan tablo isimleri belirlenmektedir.
-        public DbSet<User> Users { get; set; } 
+        public DbSet<User> Users { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Brand> Brands { get; set; }
@@ -32,8 +34,9 @@ namespace NLayereStoreTemplateProject.Data
             modelBuilder.ApplyConfiguration(new OrderConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
-            
+            modelBuilder.ApplyConfiguration(new UserAppConfiguration());
 
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

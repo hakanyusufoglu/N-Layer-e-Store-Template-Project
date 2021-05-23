@@ -16,7 +16,8 @@ namespace NLayereStoreTemplateProject.Core.Entities
         public int ProductId { get; set; }
         public int UserId { get; set; }
         public virtual Product Product { get; set; }
-        public virtual User User { get; set; }
+        public virtual User User { get; set; } //will be delete 
+        public virtual UserApp UserApp { get; set; }
 
 
 
