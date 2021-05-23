@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLayereStoreTemplateProject
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLayereStoreTemplateProject.Service", "NLayereStoreTemplateProject.Service\NLayereStoreTemplateProject.Service.csproj", "{976E24E2-F0F0-4D34-814A-4E7FF1B9379D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLayereStoreTemplateProject.Web", "NLayereStoreTemplateProject.Web\NLayereStoreTemplateProject.Web.csproj", "{3139D566-7557-4811-98F8-5F6A01552B19}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{976E24E2-F0F0-4D34-814A-4E7FF1B9379D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{976E24E2-F0F0-4D34-814A-4E7FF1B9379D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{976E24E2-F0F0-4D34-814A-4E7FF1B9379D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3139D566-7557-4811-98F8-5F6A01552B19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3139D566-7557-4811-98F8-5F6A01552B19}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3139D566-7557-4811-98F8-5F6A01552B19}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3139D566-7557-4811-98F8-5F6A01552B19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
