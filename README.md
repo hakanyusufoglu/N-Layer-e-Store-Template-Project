@@ -1,1 +1,1 @@
-# N-Layer-e-Store-Template-Project (Being Developed) 
+# N-Layer-e-Store-Template-Project 
